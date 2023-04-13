@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MerolekiandoBlazor",
+    "\\MerolekiandoBlazor\\Pages",
+    "\\MerolekiandoBlazor\\Shared",
+    "\\MerolekiandoBlazor\\wwwroot"
   ],
+  "SelectedNode": "\\MerolekiandoBlazor\\Shared\\MainLayout.razor",
   "PreviewInSolutionExplorer": false
 }

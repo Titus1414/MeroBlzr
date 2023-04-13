@@ -1,0 +1,617 @@
+﻿
+
+@page "/singleproductview"
+
+<PageTitle>Product</PageTitle>
+
+<div class="container-fluid px-0">
+    <div class="banner row m-0 mb-2">
+        <div class="col-12 d-flex flex-md-row flex-column align-items-center justify-content-center">
+            <span class="d-flex align-items-center justify-content-center mb-md-0 mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" preserveAspectRatio="none"
+                     height="28" width="28" viewBox="0 0 80 80" class="jss112" aria-label="OfferUp Logo">
+                    <path fill="#00a87e" fill-rule="evenodd"
+                          d="M71.68 34.338l-8.79 8.778c-1.523 11.245-11.165 19.915-22.842 19.915C27.313 63.03 16.99 52.719 16.99 40s10.323-23.03 23.058-23.03c11.905 0 21.7 9.01 22.928 20.576l8.704-8.694 8.305 8.296C78.519 16.388 61.205 0 40.048 0 17.93 0 0 17.909 0 40s17.93 40 40.048 40C61.275 80 78.633 63.504 80 42.65l-8.32-8.312z">
+                    </path>
+                </svg>
+                <h5 class="default-color font-weight-bold mx-3 my-0">The simpler way to buy and sell locally !</h5>
+            </span>
+            <button class="btn default-hover-bg font-weight-bold font-small default-bg text-white rounded-5">
+                Get the
+                app
+            </button>
+        </div>
+    </div>
+
+    <div class="product-detail row m-0">
+        <div class="col-md-9 col-12">
+            <div class="product-img-section">
+                <div class="product-img-holder d-flex justify-content-center bg-light border rounded overflow-hidden"
+                     style="height: auto;">
+                    <img src="/images/p-1.jpg" 
+                        class="img-fluid" style="max-height: 350px;" alt="">
+                </div>
+                <div class="py-3 d-flex align-items-center gap-2">
+                    <button class="btn btn-link rounded overflow-hidden p-0">
+                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
+                    </button>
+                    <button class="btn btn-link rounded overflow-hidden p-0">
+                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
+                    </button>
+                    <button class="btn btn-link rounded overflow-hidden p-0">
+                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
+                    </button>
+                    <button class="btn btn-link rounded overflow-hidden p-0">
+                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
+                    </button>
+                    <button class="btn btn-link rounded overflow-hidden p-0">
+                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
+                    </button>
+
+                </div>
+                <hr class="mt-0">
+                <div class="description">
+                    <h4>Description</h4>
+                    <p class="" id="product-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem laudantium soluta,
+                        nesciunt, ipsa cumque magni nostrum quod molestias vel nam eveniet doloribus eum. At,
+                        temporibus? Eos alias quidem vitae explicabo?
+                    </p>
+                </div>
+                <hr>
+                <span class="link-buttons d-flex flex-wrap align-items-center gap-2">
+                    <a href="#" class="bg-disable rounded-5 px-2 py-1 text-center text-dark text-decoration-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-heart" width="13" height="13"
+                             fill="currentColor" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                        </svg>
+                        Save
+                    </a>
+                    <a href="#" class="bg-disable rounded-5 px-2 py-1 text-center text-dark text-decoration-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
+                             class="bi bi-flag" viewBox="0 0 16 16">
+                            <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21.294 21.294 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21.317 21.317 0 0 0 14 7.655V1.222z" />
+                        </svg>
+                        Report
+                    </a>
+                    <a href="#" class="bg-disable rounded-5 px-2 py-1 text-center text-dark text-decoration-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
+                             class="bi bi-share" viewBox="0 0 16 16">
+                            <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                        </svg>
+                        Share
+                    </a>
+                </span>
+                <hr>
+                <div class="related-searches d-flex flex-wrap align-items-center gap-2">
+                    <a href="#"
+                       class="border border-dark rounded-5 px-2 py-1 text-center text-dark text-decoration-none">
+                        wedding dress
+                    </a>
+                    <a href="#"
+                       class="border border-dark rounded-5 px-2 py-1 text-center text-dark text-decoration-none">
+                        wedding rings
+                    </a>
+                    <a href="#"
+                       class="border border-dark rounded-5 px-2 py-1 text-center text-dark text-decoration-none">
+                        flower girl dresses
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-12">
+            <hr>
+            <div class="product-detail">
+                <h5 id="product-title">
+                    Circuit Explore
+                    </h5>
+                <h4 id="product-price" class="font-weight-bold">$200</h4>
+                <p id="posted-date">Posted 1 day ago in Woodburn, Or</p>
+                <p id="product-condition">Condition: New</p>
+                <p id="product-category">Collectibles & Art - Handmade</p>
+            </div>
+            <div class="d-md-block d-none">
+                <button class="btn default-bg default-hover-bg text-white rounded-5 w-100 font-weight-bold">
+                    Make offer
+                </button>
+                <button class="btn border border-success text-success rounded-5 w-100 mt-2 font-weight-bold font-smaller">
+                    Ask
+                </button>
+            </div>
+
+            <div class="save-share py-3 m-0 d-flex align-items-center justify-content-center gap-5">
+                <a href="#" id="product-save" class=" text-center font-small font-weight-bold text-success text-decoration-none">
+                    <i class="bi bi-heart text-success"></i>
+                    Save
+                </a>
+                <a href="#" id="product-share" class=" text-center font-small font-weight-bold text-success text-decoration-none">
+                    <i class="bi bi-share text-success"></i>
+                    Share
+                </a>
+
+            </div>
+            <hr class="mt-0">
+            <div class="seller-details d-flex align-items-center">
+                <span class="profile-img rounded-5" style="height:auto;">
+                    <a href="">
+                        <img id="seller-img" src="./icons8-test-account-96.png" style="max-height: 60px;" alt="">
+                    </a>
+                </span>
+                <div class="ms-3">
+                    <h6 id="seller-name" class="m-0">Dummy Name</h6>
+                    <span id="seller-rating" class="rating-stars font-small">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        (67)
+                    </span>
+                    <p class="seller-duration">
+                        Member Since Sep 2018
+                    </p>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+    </div>
+    <hr>
+    <div class="similar-products row w-100 m-0 mb-4">
+        <h3 class="font-weight-bold mb-4">
+            Similar Items
+        </h3>
+        <div class="col-6 col-md-2 col-sm-3 px-2 mb-3">
+            <a title="Rolling Walker (350lb)" class="text-decoration-none text-dark"
+               href="/item/detail/5ec07722-8a4a-30b9-b3bd-c160a66b58a3"
+               aria-label="Rolling Walker (350lb) $65  in Oregon City, OR" tabindex="0">
+                <div class="product-img-box rounded-1 overflow-hidden">
+                    <img class="w-100"
+                         src="https://images.offerup.com/90XbEgjjF0fOa_dSAI4_FSp4TnU=/250x250/523e/523ece7ce6914c3387ebabe4bbd3e492.jpg"
+                         alt="Rolling Walker (350lb)" />
+                </div>
+                <div class=".product-subtitle1">
+                    <p class="product-title m-0 text-no-wrap">
+                        Rolling Walker (350lb)
+                    </p>
+                    <div class="price-box">
+                        <p class="m-0 product-price">$65</p>
+                    </div>
+                    <p class="m-0 product-location">Oregon City, O</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-2 col-sm-3 px-2 mb-3">
+            <a title="Rolling Walker (350lb)" class="text-decoration-none text-dark"
+               href="/item/detail/5ec07722-8a4a-30b9-b3bd-c160a66b58a3"
+               aria-label="Rolling Walker (350lb) $65  in Oregon City, OR" tabindex="0">
+                <div class="product-img-box rounded-1 overflow-hidden">
+                    <img class="w-100"
+                         src="https://images.offerup.com/90XbEgjjF0fOa_dSAI4_FSp4TnU=/250x250/523e/523ece7ce6914c3387ebabe4bbd3e492.jpg"
+                         alt="Rolling Walker (350lb)" />
+                </div>
+                <div class=".product-subtitle1">
+                    <p class="product-title m-0 text-no-wrap">
+                        Rolling Walker (350lb)
+                    </p>
+                    <div class="price-box">
+                        <p class="m-0 product-price">$65</p>
+                    </div>
+                    <p class="m-0 product-location">Oregon City, O</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-2 col-sm-3 px-2 mb-3">
+            <a title="Rolling Walker (350lb)" class="text-decoration-none text-dark"
+               href="/item/detail/5ec07722-8a4a-30b9-b3bd-c160a66b58a3"
+               aria-label="Rolling Walker (350lb) $65  in Oregon City, OR" tabindex="0">
+                <div class="product-img-box rounded-1 overflow-hidden">
+                    <img class="w-100"
+                         src="https://images.offerup.com/90XbEgjjF0fOa_dSAI4_FSp4TnU=/250x250/523e/523ece7ce6914c3387ebabe4bbd3e492.jpg"
+                         alt="Rolling Walker (350lb)" />
+                </div>
+                <div class=".product-subtitle1">
+                    <p class="product-title m-0 text-no-wrap">
+                        Rolling Walker (350lb)
+                    </p>
+                    <div class="price-box">
+                        <p class="m-0 product-price">$65</p>
+                    </div>
+                    <p class="m-0 product-location">Oregon City, O</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-2 col-sm-3 px-2 mb-3">
+            <a title="Rolling Walker (350lb)" class="text-decoration-none text-dark"
+               href="/item/detail/5ec07722-8a4a-30b9-b3bd-c160a66b58a3"
+               aria-label="Rolling Walker (350lb) $65  in Oregon City, OR" tabindex="0">
+                <div class="product-img-box rounded-1 overflow-hidden">
+                    <img class="w-100"
+                         src="https://images.offerup.com/90XbEgjjF0fOa_dSAI4_FSp4TnU=/250x250/523e/523ece7ce6914c3387ebabe4bbd3e492.jpg"
+                         alt="Rolling Walker (350lb)" />
+                </div>
+                <div class=".product-subtitle1">
+                    <p class="product-title m-0 text-no-wrap">
+                        Rolling Walker (350lb)
+                    </p>
+                    <div class="price-box">
+                        <p class="m-0 product-price">$65</p>
+                    </div>
+                    <p class="m-0 product-location">Oregon City, O</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-2 col-sm-3 px-2 mb-3">
+            <a title="Rolling Walker (350lb)" class="text-decoration-none text-dark"
+               href="/item/detail/5ec07722-8a4a-30b9-b3bd-c160a66b58a3"
+               aria-label="Rolling Walker (350lb) $65  in Oregon City, OR" tabindex="0">
+                <div class="product-img-box rounded-1 overflow-hidden">
+                    <img class="w-100"
+                         src="https://images.offerup.com/90XbEgjjF0fOa_dSAI4_FSp4TnU=/250x250/523e/523ece7ce6914c3387ebabe4bbd3e492.jpg"
+                         alt="Rolling Walker (350lb)" />
+                </div>
+                <div class=".product-subtitle1">
+                    <p class="product-title m-0 text-no-wrap">
+                        Rolling Walker (350lb)
+                    </p>
+                    <div class="price-box">
+                        <p class="m-0 product-price">$65</p>
+                    </div>
+                    <p class="m-0 product-location">Oregon City, O</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-2 col-sm-3 px-2 mb-3">
+            <a title="Rolling Walker (350lb)" class="text-decoration-none text-dark"
+               href="/item/detail/5ec07722-8a4a-30b9-b3bd-c160a66b58a3"
+               aria-label="Rolling Walker (350lb) $65  in Oregon City, OR" tabindex="0">
+                <div class="product-img-box rounded-1 overflow-hidden">
+                    <img class="w-100"
+                         src="https://images.offerup.com/90XbEgjjF0fOa_dSAI4_FSp4TnU=/250x250/523e/523ece7ce6914c3387ebabe4bbd3e492.jpg"
+                         alt="Rolling Walker (350lb)" />
+                </div>
+                <div class=".product-subtitle1">
+                    <p class="product-title m-0 text-no-wrap">
+                        Rolling Walker (350lb)
+                    </p>
+                    <div class="price-box">
+                        <p class="m-0 product-price">$65</p>
+                    </div>
+                    <p class="m-0 product-location">Oregon City, O</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="related-products row w-100 m-md-0 m-0 mb-5">
+        <h3 class="font-weight-bold mb-4">
+            Cory Stewart's other offers
+        </h3>
+        <div class="col-6 col-md-2 col-sm-3 px-2 mb-3">
+            <a title="Rolling Walker (350lb)" class="text-decoration-none text-dark"
+               href="/item/detail/5ec07722-8a4a-30b9-b3bd-c160a66b58a3"
+               aria-label="Rolling Walker (350lb) $65  in Oregon City, OR" tabindex="0">
+                <div class="product-img-box rounded-1 overflow-hidden">
+                    <img class="w-100"
+                         src="https://images.offerup.com/90XbEgjjF0fOa_dSAI4_FSp4TnU=/250x250/523e/523ece7ce6914c3387ebabe4bbd3e492.jpg"
+                         alt="Rolling Walker (350lb)" />
+                </div>
+                <div class=".product-subtitle1">
+                    <p class="product-title m-0 text-no-wrap">
+                        Rolling Walker (350lb)
+                    </p>
+                    <div class="price-box">
+                        <p class="m-0 product-price">$65</p>
+                    </div>
+                    <p class="m-0 product-location">Oregon City, O</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-2 col-sm-3 px-2 mb-3">
+            <a title="Rolling Walker (350lb)" class="text-decoration-none text-dark"
+               href="/item/detail/5ec07722-8a4a-30b9-b3bd-c160a66b58a3"
+               aria-label="Rolling Walker (350lb) $65  in Oregon City, OR" tabindex="0">
+                <div class="product-img-box rounded-1 overflow-hidden">
+                    <img class="w-100"
+                         src="https://images.offerup.com/90XbEgjjF0fOa_dSAI4_FSp4TnU=/250x250/523e/523ece7ce6914c3387ebabe4bbd3e492.jpg"
+                         alt="Rolling Walker (350lb)" />
+                </div>
+                <div class=".product-subtitle1">
+                    <p class="product-title m-0 text-no-wrap">
+                        Rolling Walker (350lb)
+                    </p>
+                    <div class="price-box">
+                        <p class="m-0 product-price">$65</p>
+                    </div>
+                    <p class="m-0 product-location">Oregon City, O</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-2 col-sm-3 px-2 mb-3">
+            <a title="Rolling Walker (350lb)" class="text-decoration-none text-dark"
+               href="/item/detail/5ec07722-8a4a-30b9-b3bd-c160a66b58a3"
+               aria-label="Rolling Walker (350lb) $65  in Oregon City, OR" tabindex="0">
+                <div class="product-img-box rounded-1 overflow-hidden">
+                    <img class="w-100"
+                         src="https://images.offerup.com/90XbEgjjF0fOa_dSAI4_FSp4TnU=/250x250/523e/523ece7ce6914c3387ebabe4bbd3e492.jpg"
+                         alt="Rolling Walker (350lb)" />
+                </div>
+                <div class=".product-subtitle1">
+                    <p class="product-title m-0 text-no-wrap">
+                        Rolling Walker (350lb)
+                    </p>
+                    <div class="price-box">
+                        <p class="m-0 product-price">$65</p>
+                    </div>
+                    <p class="m-0 product-location">Oregon City, O</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-2 col-sm-3 px-2 mb-3">
+            <a title="Rolling Walker (350lb)" class="text-decoration-none text-dark"
+               href="/item/detail/5ec07722-8a4a-30b9-b3bd-c160a66b58a3"
+               aria-label="Rolling Walker (350lb) $65  in Oregon City, OR" tabindex="0">
+                <div class="product-img-box rounded-1 overflow-hidden">
+                    <img class="w-100"
+                         src="https://images.offerup.com/90XbEgjjF0fOa_dSAI4_FSp4TnU=/250x250/523e/523ece7ce6914c3387ebabe4bbd3e492.jpg"
+                         alt="Rolling Walker (350lb)" />
+                </div>
+                <div class=".product-subtitle1">
+                    <p class="product-title m-0 text-no-wrap">
+                        Rolling Walker (350lb)
+                    </p>
+                    <div class="price-box">
+                        <p class="m-0 product-price">$65</p>
+                    </div>
+                    <p class="m-0 product-location">Oregon City, O</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+<footer class="footer default-bg">
+    <div class="container-fluid">
+
+        <div class="row d-flex flex-md-row flex-column align-items-center justify-content-between pt-3">
+            <div class=" col-md-8 footer-links d-md-flex d-none align-items-start justify-content-between mb-md-0 mb-2">
+                <ul class="list-unstyled text-white">
+                    <li>
+                        <h6>Shop</h6>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            How it works
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            Explore
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            Trust & safety
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            Safe trade spots
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled text-white">
+                    <li>
+                        <h6>Sell</h6>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            Post an item
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            Auto dealership
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled text-white">
+                    <li>
+                        <h6>About</h6>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            Our Story
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            Careers
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            Press
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled text-white">
+                    <li>
+                        <h6>help</h6>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            Help center
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            Community
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white">
+                            Blog
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 d-md-none d-flex flex-column align-items-start justify-content-between ">
+                <div class="w-100">
+                    <a class="text-white d-flex align-items-center justify-content-between text-decoration-none"
+                       data-bs-toggle="collapse" data-bs-target="#drop-1">
+                        <h6>Shop</h6>
+                        <i class="bi bi-chevron-compact-down"></i>
+                    </a>
+
+                    <div id="drop-1" class="collapse">
+                        <ul class="list-unstyled text-white">
+                            <li>
+                                <a href="#" class="text-white">
+                                    How it works
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white">
+                                    Explore
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white">
+                                    Trust & safety
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white">
+                                    Safe trade spots
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-100">
+                    <a class="text-white d-flex align-items-center justify-content-between text-decoration-none"
+                       data-bs-toggle="collapse" data-bs-target="#drop-2">
+                        <h6>Sell</h6>
+                        <i class="bi bi-chevron-compact-down"></i>
+                    </a>
+
+                    <div id="drop-2" class="collapse">
+                        <ul class="list-unstyled text-white">
+
+                            <li>
+                                <a href="#" class="text-white">
+                                    Post an item
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white">
+                                    Auto dealership
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-100">
+                    <a class="text-white d-flex align-items-center justify-content-between text-decoration-none"
+                       data-bs-toggle="collapse" data-bs-target="#drop-3">
+                        <h6>About</h6>
+                        <i class="bi bi-chevron-compact-down"></i>
+                    </a>
+
+                    <div id="drop-3" class="collapse">
+                        <ul class="list-unstyled text-white">
+                            <li>
+                                <a href="#" class="text-white">
+                                    Our Story
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white">
+                                    Careers
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white">
+                                    Press
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-100">
+                    <a class="text-white d-flex align-items-center justify-content-between text-decoration-none"
+                       data-bs-toggle="collapse" data-bs-target="#drop-4">
+                        <h6>Help</h6>
+                        <i class="bi bi-chevron-compact-down"></i>
+                    </a>
+
+                    <div id="drop-4" class="collapse">
+                        <ul class="list-unstyled text-white">
+                            <li>
+                                <a href="#" class="text-white">
+                                    Help center
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white">
+                                    Community
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white">
+                                    Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-12 pe-md-4 d-flex flex-column align-items-md-end align-items-center">
+                <button class="btn border border-white text-white rounded-5 font-weight-bold font-smaller">
+                    Get the App
+                </button>
+                <div class="d-flex align-items-center gap-4 py-2 ">
+                    <i class="bi bi-twitter text-white"></i>
+                    <i class="bi bi-facebook text-white"></i>
+                    <i class="bi bi-instagram text-white"></i>
+                    <i class="bi bi-linkedin text-white"></i>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-0 mb-0 bg-white text-white">
+        <div class="d-flex flex-md-row flex-column align-items-center justify-content-between py-4 mb-md-0 mb-3">
+            <p class="mb-0 text-white font-small">© 2023 OfferUp Inc.</p>
+            <span class="text-white">
+                <a href="#" class="text-white">Terms of Service</a>
+                /
+                <a href="#" class="text-white">Privacy Policy</a>
+            </span>
+
+        </div>
+    </div>
+
+</footer>
+
+<!-- Stiky Bottom Buttons -->
+<div class="d-md-none d-flex align-items-center gap-2 p-2 w-100 bg-white position-fixed" style="bottom: 0px;">
+    <button class="btn default-bg default-hover-bg text-white rounded-5 w-100 font-weight-bold">
+        Make offer
+    </button>
+    <button class="btn border border-success text-success rounded-5 w-100 font-weight-bold font-smaller">
+        Ask
+    </button>
+</div>
+
+@code {
+    @*private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }*@
+}
+
