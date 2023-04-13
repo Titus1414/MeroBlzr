@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jwxc85xKuiKnOVs0fhnNpupSpuFbRz6mc6st2OYfNv8=",
+  "Hash": "WL7kwuvy0umE4UBUsIBP6fL3R+pUNepyHWp+HbU29Zc=",
   "Source": "MerolekiandoBlazor",
   "BasePath": "_content/MerolekiandoBlazor",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "MerolekiandoBlazor\\wwwroot",
       "Source": "MerolekiandoBlazor",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\MerolekiandoBlazor.styles.css",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\MerolekiandoBlazor.styles.css",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "MerolekiandoBlazor.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\MerolekiandoBlazor.styles.css"
+      "OriginalItemSpec": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\MerolekiandoBlazor.styles.css"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MerolekiandoBlazor.bundle.scp.css",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MerolekiandoBlazor.bundle.scp.css",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "MerolekiandoBlazor.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MerolekiandoBlazor.bundle.scp.css"
+      "OriginalItemSpec": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MerolekiandoBlazor.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\css\\site.css",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\site.css",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\favicon.ico",
+      "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\favicon.ico",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\Office Task\\MeroBlazzer\\MerolekiandoBlazor\\MerolekiandoBlazor\\wwwroot\\",
+      "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",

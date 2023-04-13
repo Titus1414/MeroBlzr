@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "C:\\Users\\titus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\MerolekiandoBlazor.csproj",
+      "projectUniqueName": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\MerolekiandoBlazor.csproj",
       "projectName": "MerolekiandoBlazor",
-      "projectPath": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\MerolekiandoBlazor.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\obj\\",
+      "projectPath": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\MerolekiandoBlazor.csproj",
+      "packagesPath": "C:\\Users\\titus\\.nuget\\packages\\",
+      "outputPath": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\titus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }
