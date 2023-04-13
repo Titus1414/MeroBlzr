@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "Hash": "WL7kwuvy0umE4UBUsIBP6fL3R+pUNepyHWp+HbU29Zc=",
+=======
+  "Hash": "CckUpoiFSEt6B0PXr9szU5pYgeAgs+yFi+2bsIkRDsQ=",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
   "Source": "MerolekiandoBlazor",
   "BasePath": "_content/MerolekiandoBlazor",
   "Mode": "Default",
@@ -10,17 +14,62 @@
     {
       "Name": "MerolekiandoBlazor\\wwwroot",
       "Source": "MerolekiandoBlazor",
+<<<<<<< HEAD
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\MerolekiandoBlazor.styles.css",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Computed",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\Blazored.Modal.bundle.scp.css",
+      "SourceId": "Blazored.Modal",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\Administrator\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\",
+      "BasePath": "_content/Blazored.Modal",
+      "RelativePath": "Blazored.Modal.bundle.scp.css",
+      "AssetKind": "All",
+      "AssetMode": "Reference",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ProjectBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Administrator\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\Blazored.Modal.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\BlazoredModal.razor.js",
+      "SourceId": "Blazored.Modal",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\Administrator\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\",
+      "BasePath": "_content/Blazored.Modal",
+      "RelativePath": "BlazoredModal.razor.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Administrator\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\BlazoredModal.razor.js"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\MerolekiandoBlazor.styles.css",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "MerolekiandoBlazor.styles.css",
       "AssetKind": "All",
@@ -31,6 +80,7 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
+<<<<<<< HEAD
       "OriginalItemSpec": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\MerolekiandoBlazor.styles.css"
     },
     {
@@ -38,6 +88,15 @@
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Computed",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+=======
+      "OriginalItemSpec": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\bundle\\MerolekiandoBlazor.styles.css"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MerolekiandoBlazor.bundle.scp.css",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "MerolekiandoBlazor.bundle.scp.css",
       "AssetKind": "All",
@@ -48,6 +107,7 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
+<<<<<<< HEAD
       "OriginalItemSpec": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MerolekiandoBlazor.bundle.scp.css"
     },
     {
@@ -55,6 +115,15 @@
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "OriginalItemSpec": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MerolekiandoBlazor.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -68,10 +137,17 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -85,10 +161,17 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -102,10 +185,17 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -119,10 +209,17 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -136,10 +233,17 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -153,10 +257,17 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -170,10 +281,17 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -187,10 +305,17 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -204,10 +329,17 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -221,10 +353,17 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\open-iconic\\README.md",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -238,10 +377,17 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\site.css",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\site.css",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -255,10 +401,34 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\favicon.ico",
       "SourceId": "MerolekiandoBlazor",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\New folder (2)\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\css\\style.css",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+      "BasePath": "_content/MerolekiandoBlazor",
+      "RelativePath": "css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\favicon.ico",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
       "BasePath": "_content/MerolekiandoBlazor",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -270,6 +440,142 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\images\\app-upsell.png",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+      "BasePath": "_content/MerolekiandoBlazor",
+      "RelativePath": "images/app-upsell.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\app-upsell.png"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\images\\banner.png",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+      "BasePath": "_content/MerolekiandoBlazor",
+      "RelativePath": "images/banner.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\banner.png"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\images\\icons8-test-account-96.png",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+      "BasePath": "_content/MerolekiandoBlazor",
+      "RelativePath": "images/icons8-test-account-96.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons8-test-account-96.png"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\images\\p-1.jpg",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+      "BasePath": "_content/MerolekiandoBlazor",
+      "RelativePath": "images/p-1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\p-1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\images\\p-2.jpg",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+      "BasePath": "_content/MerolekiandoBlazor",
+      "RelativePath": "images/p-2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\p-2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\images\\p-3.jpg",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+      "BasePath": "_content/MerolekiandoBlazor",
+      "RelativePath": "images/p-3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\p-3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\images\\p-4.jpg",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+      "BasePath": "_content/MerolekiandoBlazor",
+      "RelativePath": "images/p-4.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\p-4.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\images\\pexels-fauxels-3184287.jpg",
+      "SourceId": "MerolekiandoBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\Titus1414\\MeroBlzr\\MerolekiandoBlazor\\wwwroot\\",
+      "BasePath": "_content/MerolekiandoBlazor",
+      "RelativePath": "images/pexels-fauxels-3184287.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\pexels-fauxels-3184287.jpg"
     }
   ]
 }

@@ -1,3 +1,5 @@
+@import '_content/Blazored.Modal/Blazored.Modal.bundle.scp.css';
+
 /* _content/MerolekiandoBlazor/Shared/MainLayout.razor.rz.scp.css */
 .page[b-xnj7kcv86n] {
     position: relative;
@@ -64,10 +66,10 @@ main[b-xnj7kcv86n] {
         z-index: 1;
     }
 
-    .top-row[b-xnj7kcv86n], article[b-xnj7kcv86n] {
+    /*.top-row, article {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
-    }
+    }*/
 }
 /* _content/MerolekiandoBlazor/Shared/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-efybuug2y8] {

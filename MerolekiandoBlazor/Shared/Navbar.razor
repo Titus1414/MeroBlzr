@@ -1,0 +1,158 @@
+﻿@inject IModalService Modal
+<div class="header sticky-top w-100 bg-white mb-md-0 mb-3">
+            <nav
+                class="navbar navbar-expand navbar-light  d-flex align-items-center justify-content-between px-3 py-md-3 py-0">
+                <div class="d-flex align-items-center">
+                    <span class="d-flex align-items-center ">
+                        <a href="" class="text-decoration-none d-md-none d-flex text-dark" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvas"> <i class="bi bi-list  me-2"></i></a>
+
+                        <a href="#" class="navbar-brand h1 default-color default-hover-color mb-0">OfferUp</a>
+                    </span>
+
+                    <div class="d-none d-md-flex align-items-center justify-content-between">
+                        <form class="form-inline my-2 my-lg-0 d-flex align-items-center rounded-5 p-1 gap-3">
+                            <input class="form-control bg-transparent border-0 mr-sm-2 rounded-5" type="search"
+                                placeholder="Search" aria-label="Search" />
+                            <button class="btn border-0 my-2 my-sm-0 rounded-5 default-bg" type="submit">
+                                <i class="bi bi-search text-white hover-color"></i>
+                            </button>
+                        </form>
+                        <span class="ms-3">
+                            <i class="bi bi-geo-alt-fill default-color"></i>
+                            <a href="#"
+                                class="location-selector default-hover-color default-color text-decoration-none">Portland
+                            </a>
+                            <i class="bi bi-truck default-color"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="collaps navbar-collaps d-flex align-items-center justify-content-between"
+                    id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle cursor-pointer d-lg-block d-none"
+                                data-bs-toggle="dropdown">
+                                About
+                            </a>
+                            <ul class="dropdown-menu shadow" style="border: none">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Link 2</a></li>
+                                <li><a class="dropdown-item" href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Post a Job</a>
+                        </li>
+                        <li class="nav-item d-lg-block d-none">
+                            <a href="#" class="nav-link">Help</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#signin-modal" class="nav-link" data-bs-toggle="modal"
+                            @onclick="@(()=>Modal.Show<LoginModal>("Modal Example"))">
+                            Login
+                        </a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="#signup-modal" class="nav-link" data-bs-toggle="modal">Signup</a>
+                        </li> -->
+                     </ul>
+                </div>
+            </nav>
+
+            <!-- Modal HTML -->
+
+            <!-- Hover dropdown menu -->
+            <div class=" d-md-flex align-items-center d-none px-3">
+                <span class="" style="min-width: 100px;"><a href="#" class="custom-font text-dark text-decoration-none"
+                        style="min-width: 105px;">Find a Job</a></span>
+                <div class="d-flex align-items-center justify-content-between w-100">
+                    <div class="dropdown">
+                        <button class="dropbtn">Electronics & Media</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Home & Garden</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Clothing, Shoes & Accessories</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Baby & Kids</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Vehicles</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Toys,Games & Hobbies</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Sports & Outdoors</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Collectibles & Art</button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropbtn">More</button>
+                        <div class="dropdown-content" style="right: 10px; left: auto">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <hr class="d-md-block d-none" />
+        </div>
+
+@code {
+    @*private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }*@
+}
