@@ -6,6 +6,10 @@
     "\\MerolekiandoBlazor\\Shared",
     "\\MerolekiandoBlazor\\wwwroot"
   ],
+<<<<<<< HEAD
+  "SelectedNode": "\\MerolekiandoBlazor.sln",
+=======
   "SelectedNode": "\\MerolekiandoBlazor\\Shared\\MainLayout.razor",
+>>>>>>> a2d97884f9a44d1b23981dd0ac4fb64e07d4a807
   "PreviewInSolutionExplorer": false
 }
