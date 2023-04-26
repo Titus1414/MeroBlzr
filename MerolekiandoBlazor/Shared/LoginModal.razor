@@ -3,7 +3,7 @@
 
 
 <!--Signin Modal HTML -->
-<div id="signin-modal" class="modal sign-in fade" tabindex="-1">
+@*<div id="signin-modal" class="modal sign-in fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered d-flex justify-content-center align-items-end">
         <div class="modal-content px-4 py-2">
             <div class="modal-head d-flex align-items-start justify-content-center p-3">
@@ -15,7 +15,7 @@
                 <button type="button" class="btn-close m-0 position-absolute" style="right: 15px;"
                         data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body-content d-flex flex-column align-items-center justify-content-start gap-2 mb-2">
+            <div class="modal-body-content d-flex flex-column align-items-center justify-content-start gap-2 mb-2">*@
                 <a href="#"
                    class="custom-log-btn bg-primary rounded-5 text-white text-center p-1 text-decoration-none">
                     <i class="bi bi-facebook float-left"></i>
@@ -36,13 +36,14 @@
                     Continue with Apple
                 </a>
                 <a href="#choice-modal" data-bs-toggle="modal"
+                @onclick="@(() => ShowModalSignIn(ModalSize.Medium))"
                    class="custom-log-btn bg-white border border-success rounded-5 text-success text-center p-1 text-decoration-none">
                     <i class="bi bi-envelope-fill text-success float-left"></i>
                     Continue with email
                 </a>
 
-            </div>
-            <div class="modal-foot text-center">
+            @*</div>
+            <div class="modal-foot text-center">*@
                 <p>
                     By tapping any of the buttons above, you agree to the <u>OfferUp Terms of Service</u>
                     and acknowledge the <u>OfferUpPrivacyPolicy</u>.
@@ -51,11 +52,25 @@
                     This site is protected by reCAPTCHA and the <u>GooglePrivacyPolicy,</u> and the
                     <u>Google Terms of Service</u> apply
                 </p>
-            </div>
+            @*</div>
         </div>
     </div>
-</div>
-
+</div>*@
+@inject IModalService Modal
 @code {
 
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; } = default!;
+
+    async Task Close() => await BlazoredModal.CloseAsync(ModalResult.Ok(true));
+    async Task Cancel() => await BlazoredModal.CancelAsync();
+
+    void ShowModalSignIn(ModalSize size)
+    {
+        var options = new ModalOptions { Size = size };
+
+        if (size == ModalSize.Custom)
+            options.SizeCustomClass = "my-custom-size";
+
+        Modal.Show<SignUpModal>("Login/SignUp", options);
+    }
 }

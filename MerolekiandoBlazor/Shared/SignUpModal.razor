@@ -1,0 +1,43 @@
+﻿@page "/signinmodal"
+
+<form class="w-100">
+    <div class="form-group">
+        <label for="userName" class="py-2">Name</label>
+        <input type="text" class="form-control" id="userName" placeholder="john">
+    </div>
+    <div class="form-group">
+        <label for="email" class="py-2">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+               placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="password" class="py-2">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password">
+    </div>
+</form>
+
+<a href="#signin-modal" class="nav-link my-2" data-bs-toggle="modal">
+    <h6 class="default-color">Already Have an Account? Login</h6>
+</a>
+<button class="btn border border-success text-success my-2 rounded-5 w-100 font-weight-bold font-smaller">
+    Sign up
+</button>
+
+<p>
+    By tapping any of the buttons above, you agree to the <u>OfferUp Terms of Service</u>
+    and acknowledge the <u>OfferUpPrivacyPolicy</u>.
+</p>
+<p>
+    This site is protected by reCAPTCHA and the <u>GooglePrivacyPolicy,</u> and the
+    <u>Google Terms of Service</u> apply
+</p>
+
+
+@code {
+
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; } = default!;
+
+    async Task Close() => await BlazoredModal.CloseAsync(ModalResult.Ok(true));
+    async Task Cancel() => await BlazoredModal.CancelAsync();
+
+}

@@ -1,5 +1,6 @@
 ﻿@inject IModalService Modal
-<div class="header sticky-top w-100 bg-white mb-md-0 mb-3">
+@*sticky-top*@
+<div class="header w-100 bg-white mb-md-0 mb-3">
             <nav
                 class="navbar navbar-expand navbar-light  d-flex align-items-center justify-content-between px-3 py-md-3 py-0">
                 <div class="d-flex align-items-center">
@@ -49,7 +50,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#signin-modal" class="nav-link" data-bs-toggle="modal"
-                            @onclick="@(()=>Modal.Show<LoginModal>("Modal Example"))">
+                            @onclick="@(() => ShowModalSignIn(ModalSize.Medium))">
                             Login
                         </a>
                         </li>
@@ -147,6 +148,17 @@
         </div>
 
 @code {
+
+    void ShowModalSignIn(ModalSize size)
+    {
+        var options = new ModalOptions { Size = size };
+
+        if (size == ModalSize.Custom)
+            options.SizeCustomClass = "my-custom-size";
+
+        Modal.Show<LoginModal>("Login/SignUp", options);
+    }
+
     @*private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
