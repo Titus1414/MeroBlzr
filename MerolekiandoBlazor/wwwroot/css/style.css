@@ -196,10 +196,17 @@
 }
 
 /* login modal */
-
+.blazored-modal.size-small {
+    max-width: 350px !important;
+}
+.bm-content{
+    display:flex !important;
+    flex-direction:column;
+    gap:10px;
+}
 .modal-content {
-  width: 75%;
-  height: 30rem;
+    width: 75%;
+    height: 30rem;
 }
 .custom-log-btn {
   width: 100%;
