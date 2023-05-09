@@ -223,47 +223,6 @@ function storeValue(element) {
     element.setAttribute('value', element.value);
 }
 
-//function loginUser(event) {
-//    event.preventDefault();
-
-//    const emailInput = document.querySelector('#loginemail');
-//    const passwordInput = document.querySelector('#loginpassword');
-//    const email = emailInput.value;
-//    const password = passwordInput.value;
-
-//    const logintype = "Admin";
-//    fetch('https://merolikeando.com/api/Auth/Login', {
-//        method: 'POST',
-//        headers: {
-//            'Content-Type': 'application/json'
-//        },
-//        body: JSON.stringify({
-//            email,
-//            password,
-//            logintype // replace with the actual type you want to send
-//        })
-//    })
-//        .then(response => {
-//            if (!response.ok) {
-//                console.log(response.json());
-//                throw new Error(`Error: ${response.status} ${response.statusText}`);
-//            }
-//            else {
-//                response.json();
-//                let data = response; 
-//                console.log(response);
-//            }
-//        })
-//        .then(data => {
-//            const token = data.token; // store token value in a variable
-//            console.log(token); // print token value to console
-//            // TODO: store token value in session and remove when session is null
-//        })
-//        .catch(error => {
-//            console.log(error);
-//        });
-//}
-
 function loginUser(event) {
     event.preventDefault();
 
@@ -271,44 +230,31 @@ function loginUser(event) {
     const passwordInput = document.querySelector('#loginpassword');
     const email = emailInput.value;
     const password = passwordInput.value;
+    const logintype = "Custom";
 
-    const logintype = "Admin";
-    fetch('https://merolikeando.com/api/Auth/Login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            email,
-            password,
-            logintype // replace with the actual type you want to send
-        })
+    axios.post('https://merolikeando.com/api/Auth/Login', {
+        email,
+        password,
+        logintype // replace with the actual type you want to send
     })
         .then(response => {
-            if (!response.ok) {
-                console.log(response.json());
-                throw new Error(`Error: ${response.status} ${response.statusText}`);
-            }
-            else {
-                return response.json();
-            }
-        })
-        .then(data => {
-            const token = data.token; // store token value in a variable
-            console.log(token); // print token value to console
-            // TODO: store token value in session and remove when session is null
-
-            // Move the code that needs to use the token inside this block
-            // For example, to set a cookie session, you can use this:
-            document.cookie = `token=${token}; path=/`;
-
-            // To store the token in local storage, you can use this:
-            localStorage.setItem('token', token);
+            const token = response.data;
+            sessionStorage.setItem('token', token); // Store the token in sessionStorage
+            console.log(token);
         })
         .catch(error => {
-            console.log(error);
+            console.error('Error:', error);
         });
 }
+
+function logoutUser() {
+    sessionStorage.removeItem('token'); // Remove the token from sessionStorage
+    // Redirect the user to the logout page or login page
+    console.log(sessionStorage.getItem('token'));
+}
+
+
+
 
 
 
