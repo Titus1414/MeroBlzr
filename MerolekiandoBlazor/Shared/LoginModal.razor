@@ -1,4 +1,8 @@
 ﻿@page "/loginmodal"
+@using Microsoft.AspNetCore.Authentication;
+@using Microsoft.AspNetCore.Authentication.Cookies;
+@using Microsoft.AspNetCore.Authentication.Facebook;
+@using Microsoft.AspNetCore.Authentication.Google;
 
 
 
@@ -16,13 +20,15 @@
                         data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body-content d-flex flex-column align-items-center justify-content-start gap-2 mb-2">*@
-                <a href="#"
-                   class="custom-log-btn bg-primary rounded-5 text-white text-center p-1 text-decoration-none">
+               @*?flg=face*@
+                <a href="auth/WebLogin"
+                    class="custom-log-btn bg-primary rounded-5 text-white text-center p-1 text-decoration-none">
                     <i class="bi bi-facebook float-left"></i>
                     Continue with Facebook
                 </a>
-                <a href="#"
-                   class="custom-log-btn bg-primary rounded-5 text-white text-center p-1 text-decoration-none">
+                @*?flg=goog*@
+                <a href="auth/WebLogin"
+                    class="custom-log-btn bg-primary rounded-5 text-white text-center p-1 text-decoration-none">
                     <i class="bi bi-google float-left"></i>
                     Continue with Google
                 </a>
@@ -57,6 +63,9 @@
     </div>
 </div>*@
 @inject IModalService Modal
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IHttpContextAccessor HttpContextAccessor
 @code {
 
     [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; } = default!;
@@ -73,4 +82,5 @@
 
         Modal.Show<SignUpModal>("Login/SignUp", options);
     }
+
 }
