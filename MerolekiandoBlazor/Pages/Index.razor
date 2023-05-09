@@ -48,17 +48,17 @@
     </div>
 </div>
 @*<SurveyPrompt Title="How is Blazor working for you?" />*@
-@inject IJSRuntime JS
+@*@inject IJSRuntime JS*@
 @code{
     //public async void appendText()
     //{
     //    await JS.InvokeAsync<string>("loadProducts");
     //}
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JS.InvokeAsync<string>("loadProducts");
-        }
-    }
+    //protected override async Task OnAfterRenderAsync(bool firstRender)
+    //{
+    //    if (firstRender)
+    //    {
+    //        await JS.InvokeAsync<string>("loadProducts");
+    //    }
+    //}
 }

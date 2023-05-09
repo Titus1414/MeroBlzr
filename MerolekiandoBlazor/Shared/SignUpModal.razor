@@ -1,26 +1,48 @@
 ﻿@page "/signinmodal"
 
-<form class="w-100">
-    <div class="form-group">
-        <label for="userName" class="py-2">Name</label>
-        <input type="text" class="form-control" id="userName" placeholder="john">
-    </div>
+@*<form class="w-100">
     <div class="form-group">
         <label for="email" class="py-2">Email address</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+        <input type="email" class="form-control" id="loginemail" aria-describedby="emailHelp"
                placeholder="Enter email">
     </div>
     <div class="form-group">
         <label for="password" class="py-2">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
+        <input type="password" class="form-control" id="loginpassword" placeholder="Password">
     </div>
 </form>
 
 <a href="#signin-modal" class="nav-link my-2" data-bs-toggle="modal">
     <h6 class="default-color">Already Have an Account? Login</h6>
 </a>
-<button class="btn border border-success text-success my-2 rounded-5 w-100 font-weight-bold font-smaller">
-    Sign up
+<button class="btn border border-success text-success my-2 rounded-5 w-100 font-weight-bold font-smaller" id="loginbutton" onclick="loginUser(event)">
+   Login
+</button>
+
+<p>
+    By tapping any of the buttons above, you agree to the <u>OfferUp Terms of Service</u>
+    and acknowledge the <u>OfferUpPrivacyPolicy</u>.
+</p>
+<p>
+    This site is protected by reCAPTCHA and the <u>GooglePrivacyPolicy,</u> and the
+    <u>Google Terms of Service</u> apply
+</p>*@
+<form class="w-100">
+    <div class="form-group">
+        <label for="loginemail" class="py-2">Email address</label>
+        <input type="email" class="form-control" id="loginemail" aria-describedby="emailHelp" placeholder="Enter email" onchange="storeValue(this)">
+    </div>
+    <div class="form-group">
+        <label for="loginpassword" class="py-2">Password</label>
+        <input type="password" class="form-control" id="loginpassword" placeholder="Password" onchange="storeValue(this)">
+    </div>
+</form>
+
+<a href="#signin-modal" class="nav-link my-2" data-bs-toggle="modal">
+    <h6 class="default-color">Don't Have an Account? Signup</h6>
+</a>
+<button class="btn border border-success text-success my-2 rounded-5 w-100 font-weight-bold font-smaller" onclick="loginUser(event)">
+    Login
 </button>
 
 <p>

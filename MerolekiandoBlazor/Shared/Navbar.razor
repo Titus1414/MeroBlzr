@@ -8,7 +8,7 @@
                         <a href="" class="text-decoration-none d-md-none d-flex text-dark" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvas"> <i class="bi bi-list  me-2"></i></a>
 
-                        <a href="#" class="navbar-brand h1 default-color default-hover-color mb-0">OfferUp</a>
+                <a href="#" class="navbar-brand h1 default-color default-hover-color mb-0">Merolikeando</a>
                     </span>
 
                     <div class="d-none d-md-flex align-items-center justify-content-between">
@@ -19,13 +19,21 @@
                                 <i class="bi bi-search text-white hover-color"></i>
                             </button>
                         </form>
-                        <span class="ms-3">
-                            <i class="bi bi-geo-alt-fill default-color"></i>
-                            <a href="#"
-                                class="location-selector default-hover-color default-color text-decoration-none">Portland
-                            </a>
-                            <i class="bi bi-truck default-color"></i>
-                        </span>
+                        <div class=" d-flex ms-3">
+                    <select class="form-select mx-1 cursor-pointer" id="provinces" aria-label="Default select example"
+                            onchange="getMunicipalities(value)">
+                        <option selected>Province</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <select class="form-select mx-1 cursor-pointer" id="municipalitiees" aria-label="Default select example">
+                        <option selected>Municipality</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                        </div>
                     </div>
                 </div>
                 <div class="collaps navbar-collaps d-flex align-items-center justify-content-between"
@@ -62,92 +70,38 @@
             </nav>
 
             <!-- Modal HTML -->
-
-            <!-- Hover dropdown menu -->
-            <div class=" d-md-flex align-items-center d-none px-3">
-                <span class="" style="min-width: 100px;"><a href="#" class="custom-font text-dark text-decoration-none"
-                        style="min-width: 105px;">Find a Job</a></span>
-                <div class="d-flex align-items-center justify-content-between w-100">
-                    <div class="dropdown">
-                        <button class="dropbtn">Electronics & Media</button>
-                        <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Home & Garden</button>
-                        <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Clothing, Shoes & Accessories</button>
-                        <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Baby & Kids</button>
-                        <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Vehicles</button>
-                        <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Toys,Games & Hobbies</button>
-                        <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Sports & Outdoors</button>
-                        <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Collectibles & Art</button>
-                        <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
-
-                    <div class="dropdown">
-                        <button class="dropbtn">More</button>
-                        <div class="dropdown-content" style="right: 10px; left: auto">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <hr class="d-md-block d-none" />
+    <!-- Hover dropdown menu -->
+    <div class=" d-md-flex align-items-start justify-content-between d-none px-3" style="height: 40px;">
+        <div class="" style="min-width: 70px;">
+            <a href="#"
+               class="custom-font text-dark text-decoration-none">Find a Job</a>
         </div>
 
+        <ul class="d-flex align-items-center justify-content-between m-0 w-100 nav-links"></ul>
+
+        <div class="nav-item dropdown">
+            <a class="nav-link  " href="#" onmouseover="customHover ()" id="doMore">
+                More
+                <span class="jss1949 mt-1">
+                </span>
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-right shadow" id="more-content">
+            </ul>
+        </div>
+
+    </div>
+            <hr class="d-md-block d-none" />
+        </div>
+@inject IJSRuntime JS
 @code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeAsync<string>("loadAPIs");
+        }
+    }
 
     void ShowModalSignIn(ModalSize size)
     {
