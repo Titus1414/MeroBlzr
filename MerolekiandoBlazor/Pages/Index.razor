@@ -42,23 +42,22 @@
                 </div>
                 @*<button @onclick="appendText"> load products</button>*@
             <div class="row m-0 pt-2 products" id="products-container">
-                    
             </div>
         </div>
     </div>
 </div>
 @*<SurveyPrompt Title="How is Blazor working for you?" />*@
-@*@inject IJSRuntime JS*@
+@inject IJSRuntime JS
 @code{
     //public async void appendText()
     //{
     //    await JS.InvokeAsync<string>("loadProducts");
     //}
-    //protected override async Task OnAfterRenderAsync(bool firstRender)
-    //{
-    //    if (firstRender)
-    //    {
-    //        await JS.InvokeAsync<string>("loadProducts");
-    //    }
-    //}
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeAsync<string>("loadProducts");
+        }
+    }
 }

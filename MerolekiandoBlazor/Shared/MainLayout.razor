@@ -6,11 +6,6 @@
     @*<div class="sidebar">
         <NavMenu />
     </div>*@
-
-
-
-
-
     <main>
         @*<div class="top-row px-4">
             <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
@@ -24,16 +19,13 @@
         </article>
     </main>
 </div>
-
-
-
 <!-- Offcanvas Sidebar -->
 <div class="offcanvas offcanvas-start" id="offcanvas">
     <div class="offcanvas-header">
         <span class="d-flex align-items-center gap-2">
             <!-- <button type="button" class="btn-close text-dark text-reset" data-bs-dismiss="offcanvas"></button> -->
             <a href="#" class="nav-link" data-bs-dismiss="offcanvas"><i class="bi bi-x-lg"></i></a>
-            <a href="#" class="navbar-brand h1 default-color default-hover-color mb-0">OfferUp</a>
+            <a href="#" class="navbar-brand h1 default-color default-hover-color mb-0">Merolikeando</a>
         </span>
 
         <span class="d-flex align-items-center justify-content-between gap-2">
@@ -49,8 +41,9 @@
         <hr>
         <!-- Catagories -->
         <h6>All Catagories</h6>
-        <div class="d-flex flex-column gap-3">
-            <div class="offcanvas-link">
+        
+        <div class="d-flex flex-column gap-3" id="offCanvasCategories">
+            @*<div class="offcanvas-link">
                 <a class="text-dark d-flex align-items-center justify-content-between cursor-pointer text-decoration-none"
                    data-bs-toggle="collapse" data-bs-target="#offcanvas-drop-1">
                     <span class="d-flex align-items-center gap-1">
@@ -85,79 +78,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-            <div class="offcanvas-link">
-                <a class="text-dark d-flex align-items-center justify-content-between cursor-pointer text-decoration-none"
-                   data-bs-toggle="collapse" data-bs-target="#offcanvas-drop-2">
-                    <span class="d-flex align-items-center gap-1">
-                        <i class="bi bi-easel"></i>
-                        <h6 class="mb-0 font-small">Home & Garden</h6>
-                    </span>
-
-                    <i class="bi bi-chevron-compact-down"></i>
-                </a>
-
-                <div id="offcanvas-drop-2" class="collapse">
-                    <ul class="list-unstyled text-white">
-                        <li>
-                            <a href="#" class="text-dark">
-                                How it works
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark">
-                                Explore
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark">
-                                Trust & safety
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark">
-                                Safe trade spots
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="offcanvas-link">
-                <a class="text-dark d-flex align-items-center justify-content-between cursor-pointer text-decoration-none"
-                   data-bs-toggle="collapse" data-bs-target="#offcanvas-drop-3">
-                    <span class="d-flex align-items-center gap-1">
-                        <i class="bi bi-shop-window"></i>
-                        <h6 class="mb-0 font-small">Clothing, Shoes & Accessories</h6>
-                    </span>
-
-                    <i class="bi bi-chevron-compact-down"></i>
-                </a>
-
-                <div id="offcanvas-drop-3" class="collapse">
-                    <ul class="list-unstyled text-white">
-                        <li>
-                            <a href="#" class="text-dark">
-                                How it works
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark">
-                                Explore
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark">
-                                Trust & safety
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-dark">
-                                Safe trade spots
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </div>*@
         </div>
         <hr>
         <h6>Shop</h6>

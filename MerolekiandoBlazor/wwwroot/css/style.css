@@ -392,13 +392,27 @@
     padding-right: 5px !important;
 }
 
-    .more-cat li {
+.more-cat li {
         display: flex;
         align-items: flex-start;
         width: 100%;
         font-size: small;
         line-height: 3;
-    }
+}
+
+.hover-bg-light:hover{
+    background-color: lightgray !important;
+}
+.cusotm-btn {
+    width: 100% !important;
+    border: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    text-align: left !important;
+    display: inline-block !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+}
 
 /* ============ desktop view ============ */
 @media all and (min-width: 992px) {
@@ -425,4 +439,9 @@
         .dropdown-menu > li:hover > .submenu {
             display: block;
         }
+}
+@media screen and (max-width: 1199px) {
+    .dropdown {
+        width: calc(100% / 5 - 1rem) !important;
+    }
 }
