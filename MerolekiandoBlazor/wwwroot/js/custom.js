@@ -86,7 +86,7 @@ function generateCategoryLinks(categories) {
     function displayCategories(startIndex) {
         
 
-        navLinks.innerHTML = ''; // clear previous categories
+        navLinks.innerHTML = ''; 
 
 
         for (let i = startIndex; i < startIndex + num && i < categories.length; i++) {
@@ -126,8 +126,6 @@ function generateCategoryLinks(categories) {
                 <button class="cusotm-btn" value="${subCategory.id}" onclick="setFilters(2, 0, this.value, 0, 0)">
                 ${subCatName}</button>
                 `
-                //subCatLink.textContent = subCatName;
-
                 dropdownContent.appendChild(subCatLink);
             });
 
@@ -231,51 +229,80 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-//dummy Product API
-//`https://jsonplaceholder.typicode.com/photos?_page=${currentpage}&_limit=${productsperpage}`
+
+let currentpage = 1;
+const productsperpage = 18;
+function loadDefaultProducts() {
+    fetch(
+        `https://smallbluebook74.conveyor.cloud/api/Product/GetProductsWithOutToken?pageSize=${productsperpage}&pageNumber=${currentpage}`
+
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            // append the new products to the existing list
+            const productscontainer = document.querySelector("#products-container");
+            //productscontainer.innerHTML = '';
+            data.result.forEach((product) => {
+                const productElement = createproductelement(product);
+                productscontainer.appendChild(productElement);
+            });
+            // increment the current page number
+            currentpage++;
+            //console.log(currentpage);
+        });
+
+}
 
 
-let categoryID = 1008;
-let subCategoryID = 1010;
+
+let categoryID = 0;
+let subCategoryID = 0;
 let provinceID = 0;
 let muncipalityID = 0;
 let searchKeyWord = null;
+let filterOn = false;
 
 function setFilters(filterType, catid, subcatid, provncid, muncid) {
 
     //console.log(filterType, catid, subcatid, provncid, muncid);  //To check what we are getting 
+    
+        
+        if (filterType === 1) {
 
-    if (filterType === 1) {
+            console.log("filter 1");
 
-        console.log("filter 1");
-
-        if (catid !== 0) {
-            categoryID = catid;
-            subCategoryID = 0;
+            if (catid !== 0) {
+                categoryID = catid;
+                subCategoryID = 0;
+            }
         }
-    }
 
-    else if (filterType === 2) {
-        if (subcatid !== 0) {
-            subCategoryID = subcatid;
+        else if (filterType === 2) {
+            if (subcatid !== 0) {
+                subCategoryID = subcatid;
+            }
         }
-    }
 
-    else if (filterType === 3) {
-        if (provncid !== 0) {
-            provinceID = provncid;
-            muncipalityID = 0;
+        else if (filterType === 3) {
+            if (provncid !== 0) {
+                provinceID = provncid;
+                muncipalityID = 0;
+            }
         }
-    }
 
-    else if (filterType === 4) {
-        if (muncid !== 0) {
-            muncipalityID = muncid;
+        else if (filterType === 4) {
+            if (muncid !== 0) {
+                muncipalityID = muncid;
+            }
         }
-    }
 
-    //console.log(categoryID, subCategoryID, provinceID, muncipalityID); //To test ids which are saved at the end
-    loadProducts();
+        //console.log(categoryID, subCategoryID, provinceID, muncipalityID); //To test ids which are saved at the end
+
+        loadProducts();
+    
+
+    
 }
 function searchValueSave(value) {
     if (value != null) {
@@ -293,16 +320,12 @@ function search() {
     loadProducts();
     console.log("i'm search");
 }
-//document.querySelector('.filter').addEventListener('click', function () {
-//    // call the setFilters function here with the arguments you want
-//    setFilters(3,0,0,1,0);
-//});
+
 function loadProducts() {
     //debugger
-    let currentpage = 1;
-    const productsperpage = 10;
-    // make an ajax call to fetch the products for the current page
-        //https://wideredkayak73.conveyor.cloud/api/Product/GetProductsWithOutToken?pageSize=${productsperpage}&pageNumber=${currentpage}
+    //let currentpage = 1;
+    //const productsperpage = 18;
+    filterOn = true;
 
     fetch(
         `https://smallbluewave65.conveyor.cloud/api/Product/GetProductsWithOutTokenByFilters?cat=${categoryID}&subCat=${subCategoryID}&prvnc=${provinceID}&munc=${muncipalityID}&pageSize=${productsperpage}&pageNumber=${currentpage}&search${searchKeyWord}`
@@ -312,7 +335,6 @@ function loadProducts() {
         .then((data) => {
             console.log("after refetch", categoryID, subCategoryID, provinceID, muncipalityID, searchKeyWord);
             //console.log(data);
-            // append the new products to the existing list
             const productscontainer = document.querySelector("#products-container");
             productscontainer.innerHTML = '';
             data.result.forEach((product) => {
@@ -321,6 +343,7 @@ function loadProducts() {
             });
             // increment the current page number
             currentpage++;
+            
         });
 }
 
@@ -328,6 +351,12 @@ function loadProducts() {
 function createproductelement(product) {
     
     //debugger
+    let productIMG = product.image;
+    if (filterOn === false) {
+        const imageUrls = product.prodImages.map((imageObj) => imageObj.image);
+        productIMG = "https://merolikeando.com" + imageUrls[0];
+        //console.log(productIMG);
+    }
     const productElement = document.createElement("div");
     productElement.classList.add("col-6", "col-md-2", "col-sm-3", "px-2", "mb-3");
     productElement.innerHTML = `
@@ -335,18 +364,20 @@ function createproductelement(product) {
 
             <div class="product-img-box rounded-1 overflow-hidden">
                 <img class="w-100 img-fluid"
-                src="${product.image}"
+                src="${productIMG}"
                  />
             </div>
-            <a title="${product.title}" class="text-decoration-none text-dark"
-            href="${product.link}" aria-label="${product.title} ${product.price} in ${product.location}" tabindex="0">
+            <a id = "${product.id}" title="${product.title}" class="text-decoration-none text-dark"  onclick="singleProductDetail(id)"
+            href="singleproductview" aria-label="${product.title} ${product.price} in ${product.location}" tabindex="0">
             <div class="product-subtitle1">
                 <p class="product-title m-0 text-no-wrap">
                     ${product.title}
                 </p>
                 <div class="price-box">
+                
                     <p class="m-0 product-price">$${product.id}</p>
-                </div>
+                
+                    </div>
                 <p class="m-0 product-location">oregon city, o</p>
             </div>
         </a>
@@ -356,15 +387,20 @@ function createproductelement(product) {
 
 }
 
+
 window.addEventListener("scroll", () => {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
     if (scrollTop + clientHeight >= scrollHeight - 5) {
-        // load more products
-        loadProducts();
+        //console.log("scroll works ");
+        
+        if (filterOn === false) {
+            loadDefaultProducts();
+        } else {
+            loadProducts();
+        }
     }
 });
 
-// Load the initial set of products
 
 function storeValue(element) {
     element.setAttribute('value', element.value);
@@ -382,7 +418,7 @@ function loginUser(event) {
     axios.post('https://merolikeando.com/api/Auth/Login', {
         email,
         password,
-        logintype // replace with the actual type you want to send
+        Custom
     })
         .then(response => {
             const token = response.data;
@@ -400,7 +436,93 @@ function logoutUser() {
     console.log(sessionStorage.getItem('token'));
 }
 
-$(document).ready(function () {
-    loadAPIs();
-    loadProducts();
-});
+
+async function singleProductDetail(clickedId) {
+    try {
+        const response = await fetch(`https://smallbluebook74.conveyor.cloud/api/Product/GetProductsById?id=${clickedId}`);
+        const data = await response.json();
+        const productDetails = data.result;
+        console.log("clicked id =", clickedId);
+
+        const productTitle = document.getElementById('product-title');
+        const productDescr = document.getElementById('product-description');
+        const productPrice = document.getElementById('product-price');
+        const productPostDate = document.getElementById('posted-date');
+        const productCondition = document.getElementById('product-condition');
+        const prductSeller = document.getElementById('seller-name');
+        const productCat = document.getElementById('product-category');
+        const productMainImg = document.getElementById('mainProductImage');
+        const imageUrls = productDetails.prodImages.map((imageObj) => imageObj.image);
+        productMainImg.src = "https://merolikeando.com" + imageUrls[0];
+
+        const imageButtonsContainer = document.getElementById('prodimgsbox');
+        imageUrls.forEach((imageUrl, index) => {
+            const button = document.createElement('button');
+            button.classList.add('btn', 'btn-link', 'rounded', 'overflow-hidden', 'p-0');
+            if (index === 0) {
+                button.classList.add('active');
+            }
+            button.onclick = function () {
+                changeMainImage(this);
+            };
+
+            const image = document.createElement('img');
+            image.src = "https://merolikeando.com" + imageUrl;
+            image.style.maxHeight = '50px';
+            image.style.maxWidth = '50px';
+            image.alt = '';
+
+            button.appendChild(image);
+            imageButtonsContainer.appendChild(button);
+        });
+
+        productTitle.textContent = productDetails.title;
+        productDescr.textContent = productDetails.description;
+        productPrice.textContent = "$" + productDetails.price;
+        productPostDate.textContent = "Posted Date: " + productDetails.createdDate;
+        productCondition.textContent = "Condition: " + productDetails.condition;
+
+        productID = productDetails.id;
+        console.log(productID);
+        const sellerName = await getSellerName(clickedId);
+        const productCategory = await getSingleProductCategory(clickedId);
+
+        prductSeller.textContent = sellerName;
+        //console.log('Hey, I am seller', sellerName);
+        productCat.textContent = "Category : " + productCategory;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+async function getSellerName(productID) {
+    const response = await fetch(`https://smallbluebook74.conveyor.cloud/api/Auth/GetUsersByIdWithOutToken?id=${productID}`);
+    const data = await response.json();
+    const sellerName = data.result.name;
+    console.log(sellerName);
+    return sellerName;
+}
+
+async function getSingleProductCategory(productID) {
+    const response = await fetch(`https://smallbluebook74.conveyor.cloud/api/Extra/GetCategoryByIdWOT?id=${productID}`);
+    const data = await response.json();
+    const productCat = data.result.name;
+    console.log(data);
+    return productCat;
+}
+
+//Product Image change onclick
+function changeMainImage(button) {
+    const buttons = document.querySelectorAll('.btn-link');
+    buttons.forEach((btn) => {
+        btn.classList.remove('active');
+    });
+
+    button.classList.add('active');
+
+    const imageUrl = button.querySelector('img').src;
+
+    const mainImage = document.getElementById('mainProductImage');
+    mainImage.src = imageUrl;
+}
+

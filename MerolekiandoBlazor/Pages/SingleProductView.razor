@@ -7,7 +7,7 @@
 <div class="container-fluid px-0">
     <div class="banner row m-0 mb-2">
         <div class="col-12 d-flex flex-md-row flex-column align-items-center justify-content-center">
-            <span class="d-flex align-items-center justify-content-center mb-md-0 mb-2">
+            <div class="d-flex align-items-center justify-content-center mb-md-0 mb-2">
                 <svg xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" preserveAspectRatio="none"
                      height="28" width="28" viewBox="0 0 80 80" class="jss112" aria-label="OfferUp Logo">
                     <path fill="#00a87e" fill-rule="evenodd"
@@ -15,7 +15,7 @@
                     </path>
                 </svg>
                 <h5 class="default-color font-weight-bold mx-3 my-0">The simpler way to buy and sell locally !</h5>
-            </span>
+            </div>
             <button class="btn default-hover-bg font-weight-bold font-small default-bg text-white rounded-5">
                 Get the
                 app
@@ -26,36 +26,19 @@
     <div class="product-detail row m-0">
         <div class="col-md-9 col-12">
             <div class="product-img-section">
-                <div class="product-img-holder d-flex justify-content-center bg-light border rounded overflow-hidden"
-                     style="height: auto;">
-                    <img src="/images/p-1.jpg" 
-                        class="img-fluid" style="max-height: 350px;" alt="">
-                </div>
-                <div class="py-3 d-flex align-items-center gap-2">
-                    <button class="btn btn-link rounded overflow-hidden p-0">
-                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
-                    </button>
-                    <button class="btn btn-link rounded overflow-hidden p-0">
-                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
-                    </button>
-                    <button class="btn btn-link rounded overflow-hidden p-0">
-                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
-                    </button>
-                    <button class="btn btn-link rounded overflow-hidden p-0">
-                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
-                    </button>
-                    <button class="btn btn-link rounded overflow-hidden p-0">
-                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
-                    </button>
+                    <div class="product-img-holder d-flex justify-content-center bg-light border rounded overflow-hidden" style="height: auto;">
+                        <img id="mainProductImage" src="/images/p-1.jpg" class="img-fluid" style="max-height: 350px;" alt="">
+                    </div>
+                   <div class="py-3 d-flex align-items-center gap-2" id="prodimgsbox">
+                      
+                   </div>  
 
-                </div>
+                
                 <hr class="mt-0">
                 <div class="description">
                     <h4>Description</h4>
                     <p class="" id="product-description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem laudantium soluta,
-                        nesciunt, ipsa cumque magni nostrum quod molestias vel nam eveniet doloribus eum. At,
-                        temporibus? Eos alias quidem vitae explicabo?
+                        
                     </p>
                 </div>
                 <hr>
@@ -104,11 +87,11 @@
             <hr>
             <div class="product-detail">
                 <h5 id="product-title">
-                    Circuit Explore
+                    @*Circuit Explore*@
                     </h5>
-                <h4 id="product-price" class="font-weight-bold">$200</h4>
-                <p id="posted-date">Posted 1 day ago in Woodburn, Or</p>
-                <p id="product-condition">Condition: New</p>
+                <h4 id="product-price" class="font-weight-bold">@*$200*@</h4>
+                <p id="posted-date">@*Posted 1 day ago in Woodburn, Or*@</p>
+                <p id="product-condition">@*Condition: New*@</p>
                 <p id="product-category">Collectibles & Art - Handmade</p>
             </div>
             <div class="d-md-block d-none">
@@ -135,7 +118,7 @@
             <div class="seller-details d-flex align-items-center">
                 <span class="profile-img rounded-5" style="height:auto;">
                     <a href="">
-                        <img id="seller-img" src="./icons8-test-account-96.png" style="max-height: 60px;" alt="">
+                        <img id="seller-img" src="./images/icons8-test-account-96.png" style="max-height: 60px;" alt="">
                     </a>
                 </span>
                 <div class="ms-3">
@@ -605,7 +588,7 @@
         Ask
     </button>
 </div>
-
+@inject IJSRuntime JS
 @code {
     @*private int currentCount = 0;
 
@@ -613,5 +596,13 @@
     {
         currentCount++;
     }*@
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeAsync<string>("singleProductDetail");
+        }
+    }
 }
 
