@@ -12,13 +12,13 @@
                     </span>
 
                     <div class="d-none d-md-flex align-items-center justify-content-between">
-                        <form class="form-inline my-2 my-lg-0 d-flex align-items-center rounded-5 p-1 gap-3">
+                        <div class="form-inline my-2 my-lg-0 d-flex align-items-center rounded-5 p-1 gap-3">
                             <input class="form-control bg-transparent border-0 mr-sm-2 rounded-5" type="search"
-                                placeholder="Search" aria-label="Search" />
-                            <button class="btn border-0 my-2 my-sm-0 rounded-5 default-bg" type="submit">
+                           placeholder="Search" aria-label="Search" onchange="searchValueSave(value)" />
+                            <button class="btn border-0 my-2 my-sm-0 rounded-5 default-bg" onclick="search()">
                                 <i class="bi bi-search text-white hover-color"></i>
                             </button>
-                        </form>
+                        </div>
                         <div class=" d-flex ms-3">
                     <select class="form-select mx-1 cursor-pointer" id="provinces" aria-label="Default select example"
                             onchange="getMunicipalities(value)">

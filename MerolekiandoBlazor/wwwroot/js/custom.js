@@ -239,7 +239,7 @@ let categoryID = 1008;
 let subCategoryID = 1010;
 let provinceID = 0;
 let muncipalityID = 0;
-
+let searchKeyWord = null;
 
 function setFilters(filterType, catid, subcatid, provncid, muncid) {
 
@@ -277,6 +277,22 @@ function setFilters(filterType, catid, subcatid, provncid, muncid) {
     //console.log(categoryID, subCategoryID, provinceID, muncipalityID); //To test ids which are saved at the end
     loadProducts();
 }
+function searchValueSave(value) {
+    if (value != null) {
+        searchKeyWord = value;
+        categoryID = 0;
+        subCategoryID = 0;
+        provinceID = 0;
+        muncipalityID = 0;
+        
+    }
+    console.log("value saved...", searchKeyWord);
+}
+
+function search() {
+    loadProducts();
+    console.log("i'm search");
+}
 //document.querySelector('.filter').addEventListener('click', function () {
 //    // call the setFilters function here with the arguments you want
 //    setFilters(3,0,0,1,0);
@@ -289,12 +305,12 @@ function loadProducts() {
         //https://wideredkayak73.conveyor.cloud/api/Product/GetProductsWithOutToken?pageSize=${productsperpage}&pageNumber=${currentpage}
 
     fetch(
-        `https://littletanski28.conveyor.cloud/api/Product/GetProductsWithOutTokenByFilters?cat=${categoryID}&subCat=${subCategoryID}&prvnc=${provinceID}&munc=${muncipalityID}&pageSize=${productsperpage}&pageNumber=${currentpage}`
+        `https://smallbluewave65.conveyor.cloud/api/Product/GetProductsWithOutTokenByFilters?cat=${categoryID}&subCat=${subCategoryID}&prvnc=${provinceID}&munc=${muncipalityID}&pageSize=${productsperpage}&pageNumber=${currentpage}&search${searchKeyWord}`
     )
     
         .then((response) => response.json())
         .then((data) => {
-            console.log("after refetch", categoryID, subCategoryID, provinceID, muncipalityID);
+            console.log("after refetch", categoryID, subCategoryID, provinceID, muncipalityID, searchKeyWord);
             //console.log(data);
             // append the new products to the existing list
             const productscontainer = document.querySelector("#products-container");
