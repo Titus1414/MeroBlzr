@@ -21,6 +21,13 @@
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
 <body>
+    <div class="spinner-wrapper" id="loader">
+        <div class="spinner-border text-success">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    
+
     @RenderBody()
 
     @*<div id="blazor-error-ui">

@@ -27,7 +27,7 @@
         <div class="col-md-9 col-12">
             <div class="product-img-section">
                     <div class="product-img-holder d-flex justify-content-center bg-light border rounded overflow-hidden" style="height: auto;">
-                        <img id="mainProductImage" src="/images/p-1.jpg" class="img-fluid" style="max-height: 350px;" alt="">
+                        <img id="mainProductImage" src="" class="img-fluid" style="max-height: 350px;" alt="">
                     </div>
                    <div class="py-3 d-flex align-items-center gap-2" id="prodimgsbox">
                       
@@ -43,8 +43,8 @@
                 </div>
                 <hr>
                 <span class="link-buttons d-flex flex-wrap align-items-center gap-2">
-                    <a href="#" class="bg-disable rounded-5 px-2 py-1 text-center text-dark text-decoration-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-heart" width="13" height="13"
+                    <a class="bg-disable rounded-5 px-2 py-1 text-center text-dark text-decoration-none cursor-pointer" id="fvrtBtn" onclick="favourite()">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-heart" width="13" height="13" id="fvrtBtnIcon"
                              fill="currentColor" viewBox="0 0 16 16">
                             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                         </svg>
@@ -92,7 +92,7 @@
                 <h4 id="product-price" class="font-weight-bold">@*$200*@</h4>
                 <p id="posted-date">@*Posted 1 day ago in Woodburn, Or*@</p>
                 <p id="product-condition">@*Condition: New*@</p>
-                <p id="product-category">Collectibles & Art - Handmade</p>
+                <p id="product-category">Category : </p>
             </div>
             <div class="d-md-block d-none">
                 <button class="btn default-bg default-hover-bg text-white rounded-5 w-100 font-weight-bold">
@@ -104,7 +104,7 @@
             </div>
 
             <div class="save-share py-3 m-0 d-flex align-items-center justify-content-center gap-5">
-                <a href="#" id="product-save" class=" text-center font-small font-weight-bold text-success text-decoration-none">
+                <a id="product-save" class=" text-center font-small font-weight-bold text-success text-decoration-none cursor-pointer" onclick="favourite()">
                     <i class="bi bi-heart text-success"></i>
                     Save
                 </a>
@@ -118,11 +118,11 @@
             <div class="seller-details d-flex align-items-center">
                 <span class="profile-img rounded-5" style="height:auto;">
                     <a href="">
-                        <img id="seller-img" src="./images/icons8-test-account-96.png" style="max-height: 60px;" alt="">
+                        <img id="seller-img" src="" style="max-height: 60px;" alt="">
                     </a>
                 </span>
                 <div class="ms-3">
-                    <h6 id="seller-name" class="m-0">Dummy Name</h6>
+                    <h6 id="seller-name" class="m-0">Name</h6>
                     <span id="seller-rating" class="rating-stars font-small">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -597,12 +597,12 @@
         currentCount++;
     }*@
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JS.InvokeAsync<string>("singleProductDetail");
-        }
-    }
+    //protected override async Task OnAfterRenderAsync(bool firstRender)
+    //{
+    //    if (firstRender)
+    //    {
+    //        await JS.InvokeAsync<string>("singleProductDetail");
+    //    }
+    //}
 }
 
