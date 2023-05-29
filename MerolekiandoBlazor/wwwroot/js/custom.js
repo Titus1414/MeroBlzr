@@ -1,4 +1,4 @@
-let link = 'https://lostbrushedlamp31.conveyor.cloud/';
+let link = 'https://smallyellowleaf69.conveyor.cloud/';
 
 let categories = [];
 let searchKeyWord = null;
@@ -21,7 +21,7 @@ function hideLoader() {
 
 function loadAPIs() {
     showLoader();
-        fetch('https://merolikeando.com/api/Extra/GetProvinces')
+    fetch(`${link}api/Extra/GetProvinces`)
         .then(response => response.json())
         .then(data => {
             let provincesHTML = '';
@@ -36,7 +36,7 @@ function loadAPIs() {
 
         .catch(error => console.error(error));
 
-    fetch('https://merolikeando.com/api/Extra/GetCategories')
+    fetch(`${link}api/Extra/GetCategories`)
         .then(response => response.json())
         .then(data => {
             categories = data.result;
@@ -203,7 +203,7 @@ window.addEventListener("resize", () => {
 
 function getMunicipalities(provinceId) {
 
-    fetch(`https://merolikeando.com/api/Extra/GetProvinces`)
+    fetch(`${link}api/Extra/GetProvinces`)
         .then(response => response.json())
         .then(data => {
             let municipalitiesHTML = '';
@@ -452,6 +452,12 @@ function parseJwt(token) {
             .join('')
     );
 
+    // Parse the JSON string into a JavaScript object
+    const tokenObject = JSON.parse(jsonPayload);
+
+    // Access the ID property
+    const loginUserID = tokenObject.ID;
+    localStorage.setItem('userId', loginUserID);
     
     return JSON.parse(jsonPayload);
    
@@ -483,7 +489,7 @@ window.onload = function () {
     
     pagecheck = localStorage.getItem('productPage');
     //debugger
-    if (pagecheck == true) {
+    if (pagecheck === 'true') {
 
         singleProductDetail();
     }
@@ -500,7 +506,7 @@ function loginUser(event) {
     const password = passwordInput.value;
     const logintype = "Custom";
 
-    axios.post('https://merolikeando.com/api/Auth/Login', {
+    axios.post(`${link}api/Auth/Login`, {
         email,
         password,
         logintype
@@ -570,6 +576,7 @@ function logoutUser() {
     sessionStorage.removeItem('decodedToken');
     sessionStorage.removeItem('encryptedToken');
     decryptedTokenValue = localStorage.removeItem('decryptedToken');
+    localStorage.removeItem('userId');
     encryptedToken = localStorage.removeItem('encryptedToken');
     fvrtCheck = localStorage.removeItem('checkFvrt'); 
 
@@ -578,10 +585,18 @@ function logoutUser() {
 
 }
 
-
+//function checklogin() {
+//    if (pagecheck === 'true' && encryptedToken !== 'undefined') {
+//        document.querySelector('#chatButton').classList.add('d-none');
+//    }
+//    else {
+//        document.querySelector('#chatButton').classList.remove('d-none');
+//    }
+//}
 
 async function singleProductDetail(id) {
     showLoader();
+    
     let clickedId;
     if (id) {
         clickedId = id;
@@ -595,6 +610,7 @@ async function singleProductDetail(id) {
     else {
         clickedId = idOfClickedProduct;
         //checkfvrt();
+        console.log('refresh id check:');
     }
     localStorage.setItem('productPage', true);
     pagecheck = localStorage.getItem('productPage');
@@ -651,6 +667,7 @@ async function singleProductDetail(id) {
         sellerID = productDetails.sellerId;
         categoryID = productDetails.categoryId;
         productID = productDetails.id;
+        localStorage.setItem('sellerId', sellerID);
         console.log("seller id :", sellerID);
         console.log("product id : ",productID);
         const sellerName = await getSellerName(sellerID);
@@ -662,13 +679,25 @@ async function singleProductDetail(id) {
         
 
         prductSeller.textContent = sellerName;
-
+        //checklogin();
         productCat.textContent = "Category : " + productCategory;
-        //debugger
-        if (pagecheck === 'true' && encryptedToken !== 'undefined') {
-            checkIfAlreadyfvrt(encryptedToken);
+        const reported = productDetails.isReported;
+        if (reported && pagecheck === 'true') {
+            reportBtnUpdate(reported);
         }
-        //hideLoader();
+        else {
+            return;
+        }
+        //debugger
+        //if (pagecheck === 'true' && encryptedToken !== 'undefined') {
+        //    checkIfAlreadyfvrt(encryptedToken);
+
+        //}
+        //else {
+        //    hideLoader();
+        //}
+        
+        hideLoader();
     } catch (error) {
         console.error('Error:', error);
     }
@@ -720,6 +749,7 @@ function checkIfAlreadyfvrt(token) {
             .then(response => {
                 // Handle the response
                 const fvrtRspns = response.data.result;
+                //console.log("here in fvrt we can use check disabled :", fvrtRspns);
                 //debugger
                 const idClicked = parseInt(idOfClickedProduct, 10);
                 const result = fvrtRspns.map((element) => {
@@ -744,6 +774,7 @@ function checkIfAlreadyfvrt(token) {
             .catch(error => {
                 // Handle the error
                 console.error('Error:', error);
+                hideLoader();
             });
     }
     
@@ -838,4 +869,71 @@ function checkfvrt() {
 
     }
 }
+
+// Report Product function
+//function onLoadReportCheck() {
+
+//}
+async function sendProductReport() {
+    showLoader();
+    token = encryptedToken;
+    //id = idOfClickedProduct;
+    const apiUrl = `${link}api/Product/ProductReport`;
+    const requestData = {
+        id: idOfClickedProduct,
+        isReport: true
+    };
+
+    try {
+        const response = await axios.post(apiUrl, requestData, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        });
+
+        const responseData = response.data;
+        console.log(responseData.result);
+        const isReport = responseData.result.isReported;
+        console.log(isReport);
+
+        if (isReport) {
+            reportBtnUpdate(isReport);
+            console.log('The report is true');
+            hideLoader();
+        } else {
+            console.log('The report is false');
+            hideLoader();
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+function reportBtnUpdate(isReport) {
+    const btnToDisable = document.getElementById('reportBtn');
+    const disabledBtn = document.getElementById('reportDisabled');
+ 
+    if (isReport) {
+        btnToDisable.classList.add('d-none');
+        disabledBtn.classList.remove('d-none');
+        disabledBtn.classList.add('d-block');
+
+    }
+    //else {
+    //    btn.classList.remove('disabled');
+    //    btnToDisable.removeAttribute('aria-disabled', true);
+    //}
+    
+}
+
+//const sendMessage = async () => {
+//    const loginUserID = localStorage.getItem('userId');
+//    try {
+//        const response = await connection.invoke('SendMessage', user, message);
+//        console.log('Response:', response);
+//    } catch (error) {
+//        console.log(error);
+//    }
+//}
 

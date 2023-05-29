@@ -11,6 +11,52 @@
     align-items: center;
     opacity: 0.8;
 }
+/*chat box css starts */
+.open-button {
+    background-color: rgba(84, 180, 211, 1);
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 0px;
+    right: 28px;
+    width: 280px;
+}
+
+    .open-button:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+/* The popup chat - hidden by default */
+.chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 0px;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+.chat-default-header-bg {
+    background-color: rgba(84, 180, 211, 1);
+    color: white;
+}
+
+.chat-default-bg {
+    background-color: rgba(57, 192, 237, 0.2);
+}
+
+.p2-bg {
+    background-color: #f5f6f7;
+}
+
+.send-default-color {
+    color: rgba(84, 180, 211, 1);
+}
+/*chat box css ends*/
 
 
 .h1 {
