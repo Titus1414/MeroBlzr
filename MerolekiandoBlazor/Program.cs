@@ -1,5 +1,6 @@
 using Blazored.Modal;
 using MerolekiandoBlazor.Data;
+using MerolekiandoBlazor.Hubs;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -26,6 +27,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddBlazoredModal();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddSignalR();
 builder.Services.AddAuthentication(
     options =>
 {
@@ -99,6 +101,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+app.MapHub<ChatHub>("/chathub");
 app.UseEndpoints(endpoits =>
 {
     endpoits.MapControllers();

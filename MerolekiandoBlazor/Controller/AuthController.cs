@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.EntityFrameworkCore;
-using HtmlAgilityPack;
-using Azure;
 
 namespace MerolekiandoBlazor.Controller
 {

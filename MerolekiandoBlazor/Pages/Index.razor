@@ -23,9 +23,9 @@
                         The simpler way to buy and sell locally !
                     </h5>
                 </div>
-                <NavLink class="nav-link" href="singleproductview">
+                @*<NavLink class="nav-link" href="singleproductview">
                 <span class="oi oi-plus" aria-hidden="true"></span> Product Page
-            </NavLink>
+            </NavLink>*@
                 <button class="btn default-hover-bg font-weight-bold font-small default-bg text-white rounded-5">
                     Get the app
                 </button>
@@ -42,23 +42,22 @@
                 </div>
                 @*<button @onclick="appendText"> load products</button>*@
             <div class="row m-0 pt-2 products" id="products-container">
-                    
             </div>
         </div>
     </div>
 </div>
 @*<SurveyPrompt Title="How is Blazor working for you?" />*@
-@*@inject IJSRuntime JS*@
+@inject IJSRuntime JS
 @code{
     //public async void appendText()
     //{
     //    await JS.InvokeAsync<string>("loadProducts");
     //}
-    //protected override async Task OnAfterRenderAsync(bool firstRender)
-    //{
-    //    if (firstRender)
-    //    {
-    //        await JS.InvokeAsync<string>("loadProducts");
-    //    }
-    //}
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeAsync<string>("loadDefaultProducts");
+        }
+    }
 }

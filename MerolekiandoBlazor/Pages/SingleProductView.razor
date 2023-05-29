@@ -3,11 +3,11 @@
 @page "/singleproductview"
 
 <PageTitle>Product</PageTitle>
-
+<Navbar/>
 <div class="container-fluid px-0">
     <div class="banner row m-0 mb-2">
         <div class="col-12 d-flex flex-md-row flex-column align-items-center justify-content-center">
-            <span class="d-flex align-items-center justify-content-center mb-md-0 mb-2">
+            <div class="d-flex align-items-center justify-content-center mb-md-0 mb-2">
                 <svg xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" preserveAspectRatio="none"
                      height="28" width="28" viewBox="0 0 80 80" class="jss112" aria-label="OfferUp Logo">
                     <path fill="#00a87e" fill-rule="evenodd"
@@ -15,7 +15,7 @@
                     </path>
                 </svg>
                 <h5 class="default-color font-weight-bold mx-3 my-0">The simpler way to buy and sell locally !</h5>
-            </span>
+            </div>
             <button class="btn default-hover-bg font-weight-bold font-small default-bg text-white rounded-5">
                 Get the
                 app
@@ -26,55 +26,47 @@
     <div class="product-detail row m-0">
         <div class="col-md-9 col-12">
             <div class="product-img-section">
-                <div class="product-img-holder d-flex justify-content-center bg-light border rounded overflow-hidden"
-                     style="height: auto;">
-                    <img src="/images/p-1.jpg" 
-                        class="img-fluid" style="max-height: 350px;" alt="">
-                </div>
-                <div class="py-3 d-flex align-items-center gap-2">
-                    <button class="btn btn-link rounded overflow-hidden p-0">
-                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
-                    </button>
-                    <button class="btn btn-link rounded overflow-hidden p-0">
-                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
-                    </button>
-                    <button class="btn btn-link rounded overflow-hidden p-0">
-                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
-                    </button>
-                    <button class="btn btn-link rounded overflow-hidden p-0">
-                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
-                    </button>
-                    <button class="btn btn-link rounded overflow-hidden p-0">
-                        <img src="/images/p-2.jpg" style="max-height: 50px; min-width: 50px;" alt="">
-                    </button>
+                    <div class="product-img-holder d-flex justify-content-center bg-light border rounded overflow-hidden" style="height: auto;">
+                        <img id="mainProductImage" src="" class="img-fluid" style="max-height: 350px;" alt="">
+                    </div>
+                   <div class="py-3 d-flex align-items-center gap-2" id="prodimgsbox">
+                      
+                   </div>  
 
-                </div>
+                
                 <hr class="mt-0">
                 <div class="description">
                     <h4>Description</h4>
                     <p class="" id="product-description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem laudantium soluta,
-                        nesciunt, ipsa cumque magni nostrum quod molestias vel nam eveniet doloribus eum. At,
-                        temporibus? Eos alias quidem vitae explicabo?
+                        
                     </p>
                 </div>
                 <hr>
                 <span class="link-buttons d-flex flex-wrap align-items-center gap-2">
-                    <a href="#" class="bg-disable rounded-5 px-2 py-1 text-center text-dark text-decoration-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-heart" width="13" height="13"
+                    <a class="bg-disable rounded-5 px-2 py-1 text-center text-dark text-decoration-none cursor-pointer shadow" id="fvrtBtn" onclick="favourite()">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-heart" width="13" height="13" id="fvrtBtnIcon"
                              fill="currentColor" viewBox="0 0 16 16">
                             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                         </svg>
                         Save
                     </a>
-                    <a href="#" class="bg-disable rounded-5 px-2 py-1 text-center text-dark text-decoration-none">
+                    <a class="bg-disable rounded-5 px-2 py-1 text-center text-dark text-decoration-none cursor-pointer shadow"
+                       id="reportBtn" onclick="sendProductReport()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
                              class="bi bi-flag" viewBox="0 0 16 16">
                             <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21.294 21.294 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21.317 21.317 0 0 0 14 7.655V1.222z" />
                         </svg>
                         Report
                     </a>
-                    <a href="#" class="bg-disable rounded-5 px-2 py-1 text-center text-dark text-decoration-none">
+                    <a class="btn btn-secondary border-0 shadow rounded-5 px-2 py-1 text-decoration-none d-none disabled" 
+                    id="reportDisabled">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
+                             class="bi bi-flag" viewBox="0 0 16 16">
+                            <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21.294 21.294 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21.317 21.317 0 0 0 14 7.655V1.222z" />
+                        </svg>
+                        Reported
+                    </a>
+                    <a href="#" class="bg-disable rounded-5 px-2 py-1 text-center text-dark text-decoration-none shadow">
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
                              class="bi bi-share" viewBox="0 0 16 16">
                             <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
@@ -104,16 +96,17 @@
             <hr>
             <div class="product-detail">
                 <h5 id="product-title">
-                    Circuit Explore
+                    @*Circuit Explore*@
                     </h5>
-                <h4 id="product-price" class="font-weight-bold">$200</h4>
-                <p id="posted-date">Posted 1 day ago in Woodburn, Or</p>
-                <p id="product-condition">Condition: New</p>
-                <p id="product-category">Collectibles & Art - Handmade</p>
+                <h4 id="product-price" class="font-weight-bold">@*$200*@</h4>
+                <p id="posted-date">@*Posted 1 day ago in Woodburn, Or*@</p>
+                <p id="product-condition">@*Condition: New*@</p>
+                <p id="product-category">Category : </p>
             </div>
             <div class="d-md-block d-none">
-                <button class="btn default-bg default-hover-bg text-white rounded-5 w-100 font-weight-bold">
-                    Make offer
+                <button id="chatButton" onclick="openForm()"
+                class="btn default-bg default-hover-bg text-white rounded-5 w-100 font-weight-bold">
+                    Message Seller
                 </button>
                 <button class="btn border border-success text-success rounded-5 w-100 mt-2 font-weight-bold font-smaller">
                     Ask
@@ -121,7 +114,7 @@
             </div>
 
             <div class="save-share py-3 m-0 d-flex align-items-center justify-content-center gap-5">
-                <a href="#" id="product-save" class=" text-center font-small font-weight-bold text-success text-decoration-none">
+                <a id="product-save" class=" text-center font-small font-weight-bold text-success text-decoration-none cursor-pointer" onclick="favourite()">
                     <i class="bi bi-heart text-success"></i>
                     Save
                 </a>
@@ -135,11 +128,11 @@
             <div class="seller-details d-flex align-items-center">
                 <span class="profile-img rounded-5" style="height:auto;">
                     <a href="">
-                        <img id="seller-img" src="./icons8-test-account-96.png" style="max-height: 60px;" alt="">
+                        <img id="seller-img" src="" style="max-height: 60px;" alt="">
                     </a>
                 </span>
                 <div class="ms-3">
-                    <h6 id="seller-name" class="m-0">Dummy Name</h6>
+                    <h6 id="seller-name" class="m-0">Name</h6>
                     <span id="seller-rating" class="rating-stars font-small">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -606,6 +599,8 @@
     </button>
 </div>
 
+<ChatPage></ChatPage>
+@inject IJSRuntime JS
 @code {
     @*private int currentCount = 0;
 
@@ -613,5 +608,13 @@
     {
         currentCount++;
     }*@
+
+    //protected override async Task OnAfterRenderAsync(bool firstRender)
+    //{
+    //    if (firstRender)
+    //    {
+    //        await JS.InvokeAsync<string>("singleProductDetail");
+    //    }
+    //}
 }
 
