@@ -15,32 +15,40 @@ namespace MerolekiandoBlazor.Controller
     public class AuthController : ControllerBase
     {
         [HttpGet("WebLogin")]
-        public async Task<ActionResult> WebLogin(/*string flg*/)
+        public async Task<ActionResult> WebLogin(string flg)
         {
 
-            
-            var properties = new AuthenticationProperties {
 
-                RedirectUri = "/"
+            var properties = new AuthenticationProperties
+            {
+
+                RedirectUri = "https://localhost:7065/"
             };
 
+            if (flg == "Google")
+            {
+                return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+            }
+            else
+            {
+                return Challenge(properties, FacebookDefaults.AuthenticationScheme);
+            }
 
 
-            return Challenge(properties, FacebookDefaults.AuthenticationScheme);
 
             //if (flg == "goog")
             //{
-            //    return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+            //    //return Challenge(properties, GoogleDefaults.AuthenticationScheme);
 
-            //    //await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties()
-            //    //{
-            //    //    RedirectUri = Url.Action("GoogleResponse")
-            //    //});
+            //    await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties()
+            //    {
+            //        RedirectUri = Url.Action("GoogleResponse")
+            //    });
             //    //return RedirectToAction("GoogleResponse");
             //}
             //else
             //{
-            //    return Challenge(properties, FacebookDefaults.AuthenticationScheme);
+            //    //return Challenge(properties, FacebookDefaults.AuthenticationScheme);
 
             //    //await HttpContext.ChallengeAsync(FacebookDefaults.AuthenticationScheme, new AuthenticationProperties()
             //    //{
