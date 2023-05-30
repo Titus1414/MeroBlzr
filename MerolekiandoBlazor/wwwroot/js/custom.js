@@ -120,13 +120,15 @@ function generateCategoryLinks(categories) {
             dropdown.classList.add('dropdown');
 
             const dropbtn = document.createElement('button');
-            //dropbtn.setAttribute('value', 'category.id');
+            //dropbtn.setAttribute('value', category.id);
             dropbtn.value = category.id;
             dropbtn.setAttribute('onclick', 'setFilters(1, value, 0, 0, 0)');
             dropbtn.classList.add('dropbtn');
 
             const catNameSpan = document.createElement('span');
             catNameSpan.classList.add('category-name');
+            //catnamespan.value = category.id;
+            //catnamespan.setattribute('onclick', 'setfilters(1, value, 0, 0, 0)');
             catNameSpan.textContent = catName.length > 10 ? catName.slice(0, 10) + '...' : catName;
             catNameSpan.setAttribute('data-bs-toggle', 'tooltip');
             catNameSpan.setAttribute('data-placement', 'top');
@@ -139,13 +141,16 @@ function generateCategoryLinks(categories) {
             dropdownContent.classList.add('dropdown-content');
 
             subCategories.forEach(subCategory => {
-                const subCatName = subCategory.name;
-
+                const subCatName = subCategory.name.length > 20 ? subCategory.name.slice(0, 20) + '...' : subCategory.name;
+                const subCatIdNo = Number(subCategory.id);
+                //console.log("this converted subcatid", subCatID);
                 const subCatLink = document.createElement('a');
-                subCatLink.href = '#';
-                subCatLink.classList = 'pb-0';
+                subCatLink.value = subCatIdNo;
+                subCatLink.setAttribute('onclick', `setFilters(2, ${category.id}, value, 0, 0)`);
+                //subCatLink.href = '#';
+                subCatLink.classList.add = 'py-0', 'cursor-pointer';
                 subCatLink.innerHTML = `
-                <button class="cusotm-btn" value="${subCategory.id}" onclick="setFilters(2, 0, value, 0, 0)">
+                <button class="cusotm-btn" value="${subCatIdNo}">
                 ${subCatName}</button>
                 `
                 dropdownContent.appendChild(subCatLink);
@@ -164,15 +169,15 @@ function generateCategoryLinks(categories) {
                 const category = categories[i];
                 const catName = category.name;
                 const subCategories = category.subCategories;
-                dropdownHTML += `<li value="${category.id}" onclick="setFilters(1,value, 0, 0, 0)">
-                                <a class="dropdown-item" value="${category.id}" 
-                                href="#">${catName}</a>
+                dropdownHTML += `<li value="${category.id}" >
+                                <a class="dropdown-item" value="${category.id}" onclick="setFilters(1,value, 0, 0, 0)"
+                                >${catName}</a>
                                 <ul class="submenu submenu-left dropdown-menu shadow">`;
                 subCategories.forEach(subCategory => {
                     const subCatName = subCategory.name;
-                    dropdownHTML += `<li value="${subCategory.id}" onclick="setFilters(2, 0,value, 0, 0)">
+                    dropdownHTML += `<li value="${subCategory.id}" onclick="setFilters(2, ${category.id},value, 0, 0)">
                     <a class="dropdown-item" value="${subCategory.id}" 
-                    href="">${subCatName}</a></li>`;
+                    >${subCatName}</a></li>`;
                 });
 
                 dropdownHTML += `</ul></li>`;
@@ -255,8 +260,12 @@ document.addEventListener("DOMContentLoaded", function () {
 let currentpage = 1;
 const productsperpage = 18;
 function loadDefaultProducts() {
+    encryptedToken = localStorage.getItem('token');
     localStorage.setItem('productPage', false);
+    localStorage.setItem('sellerId', '');
+    localStorage.setItem('checkFvrt', false);
     pagecheck = localStorage.getItem('productPage');
+    localStorage.setItem('idOfClickedProduct', '');
     localStorage.setItem('clickedProduct', '');
     idOfClickedProduct = localStorage.getItem('clickedProduct');
     fetch(
@@ -308,8 +317,9 @@ function setFilters(filterType, catid, subcatid, provncid, muncid) {
         }
 
         else if (filterType === 2) {
-            if (subcatid !== 0) {
+            if (subcatid !== 0 && catid !== 0) {
                 subCategoryID = subcatid;
+                categoryID = catid;
             }
         }
 
@@ -355,7 +365,7 @@ function loadProducts() {
     //let currentpage = 1;
     //const productsperpage = 18;
     filterOn = true;
-    console.log(currentpage);
+    console.log("current page", currentpage);
     console.log(categoryID, subCategoryID, provinceID, muncipalityID);
     fetch(
         `${link}api/Product/GetProductsWithOutTokenByFilters?cat=${categoryID}&subCat=${subCategoryID}&prvnc=${provinceID}&munc=${muncipalityID}&pageSize=${productsperpage}&pageNumber=${currentpage}&search${searchKeyWord}`
@@ -489,7 +499,7 @@ window.onload = function () {
     
     pagecheck = localStorage.getItem('productPage');
     //debugger
-    if (pagecheck === 'true') {
+    if (pagecheck == 'true') {
 
         singleProductDetail();
     }
@@ -499,6 +509,7 @@ window.onload = function () {
 
 function loginUser(event) {
     event.preventDefault();
+    showLoader();
 
     const emailInput = document.querySelector('#loginemail');
     const passwordInput = document.querySelector('#loginpassword');
@@ -517,15 +528,17 @@ function loginUser(event) {
             //console.log(token);
             const decodedToken = parseJwt(token);
             const decryptedToken = JSON.stringify(decodedToken);
-            sessionStorage.setItem('decodedToken', decryptedToken);
-            sessionStorage.setItem('encryptedToken', token);
+            localStorage.setItem('decryptedToken', decryptedToken);
+            localStorage.setItem('encryptedToken', token);
 
-            decryptedTokenValue = sessionStorage.getItem('decodedToken');
-            encryptedToken = sessionStorage.getItem('encryptedToken');
+            decryptedTokenValue = localStorage.getItem('decryptedToken');
+            encryptedToken = localStorage.getItem('encryptedToken');
             //console.log("This is decrypted token:", decryptedToken);
 
-            updateLoginStatus();
+            //updateLoginStatus();
+            //loadDefaultProducts();
             refreshPage();
+            hideLoader();
             //if (pagecheck === 'true') {
             //    singleProductDetail();
             //}
@@ -552,14 +565,16 @@ function refreshPage() {
 function updateLoginStatus() {
     const loginButton = document.getElementById('loginBtn');
     const logoutButton = document.getElementById('logoutBtn');
-
+    encryptedToken = localStorage.getItem('encryptedToken');
     //const checkToken = localStorage.getItem('encryptedToken');
 
     // Check if the session is expired or removed
-    if (encryptedToken === 'undefined') {
+    if (encryptedToken == 'null' || 'undefined') {
         // Session is expired or removed
         loginButton.classList.remove('d-none');
         logoutButton.classList.add('d-none');
+        localStorage.setItem('userId', '');
+        localStorage.setItem('decryptedToken', '');
     }
     else {
         //console.log("it is not undefined : ", checkToken);
@@ -567,21 +582,39 @@ function updateLoginStatus() {
         // Session is active
         loginButton.classList.add('d-none');
         logoutButton.classList.remove('d-none');
+        const decTokenValueCheck = localStorage.getItem('decryptedToken');
+        if ((encryptedToken !== 'null' && encryptedToken !== 'undefined') && !decTokenValueCheck) {
+            const parsedToken = parseJwt(encryptedToken);
+            const decToken = JSON.stringify(parsedToken);
+            localStorage.setItem('decryptedToken', decToken);
+
+        }
+
     }
 }
 
 
 
 function logoutUser() {
+    showLoader();
+
+    updateLoginStatus();
+
     sessionStorage.removeItem('decodedToken');
     sessionStorage.removeItem('encryptedToken');
+    localStorage.removeItem('token');
     decryptedTokenValue = localStorage.removeItem('decryptedToken');
     localStorage.removeItem('userId');
     encryptedToken = localStorage.removeItem('encryptedToken');
     fvrtCheck = localStorage.removeItem('checkFvrt'); 
 
-    updateLoginStatus();
     refreshPage();
+    //if (pagecheck == 'true') {
+    //    singleProductDetail();
+    //}
+    //else {
+    //    loadDefaultProducts()
+    //}
 
 }
 
@@ -596,7 +629,8 @@ function logoutUser() {
 
 async function singleProductDetail(id) {
     showLoader();
-    
+    localStorage.setItem('productPage', true);
+    pagecheck = localStorage.getItem('productPage');
     let clickedId;
     if (id) {
         clickedId = id;
@@ -612,8 +646,7 @@ async function singleProductDetail(id) {
         //checkfvrt();
         console.log('refresh id check:');
     }
-    localStorage.setItem('productPage', true);
-    pagecheck = localStorage.getItem('productPage');
+    
     
     
     //localStorage.setItem('idOfClickedProduct', id);
