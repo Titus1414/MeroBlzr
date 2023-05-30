@@ -346,6 +346,7 @@
     font-size:medium !important;
     overflow: hidden;
     text-overflow: ellipsis !important;
+    cursor: pointer !important;
 }
 
 #more-content {
@@ -448,6 +449,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
+    text-decoration:none !important;
+    color: black;
+}
+.category-name :hover{
+   color : black !important;
 }
 
 .more-cat {
