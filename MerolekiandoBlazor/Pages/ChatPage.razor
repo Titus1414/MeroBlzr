@@ -18,6 +18,7 @@
         width: 280px;
         display: flex;
     }
+
         .open-button:hover {
             color: white;
             text-decoration: none;
@@ -31,23 +32,29 @@
         border: 3px solid #F1F1F1;
         z-index: 9;
     }
+
     .chat-default-header-bg {
         background-color: rgba(84, 180, 211, 1);
         color: white;
     }
+
     .chat-default-bg {
         background-color: rgba(57, 192, 237, 0.2);
     }
+
     .p2-bg {
         background-color: #F5F6F7;
     }
+
     .send-default-color {
         color: rgba(84, 180, 211, 1);
     }
+
     .card-body {
         overflow-y: auto;
         overflow-x: hidden;
     }
+
         .card-body::-webkit-scrollbar {
             width: 6px;
         }
@@ -65,45 +72,18 @@
                 background: #555;
             }
 </style>
-<h4>SignalR Chat</h4>
+<h4>Chat</h4>
 
-@if (!IsConnected)
-{
-    <a id="open-button" class="open-button no-fade  align-items-center justify-content-between"
-   onclick="openForm()">
-        <h5> Live Chat</h5>
-        <i class="bi bi-chevron-compact-down"></i>
-    </a>
-    <div class="chat-popup panel-collapse collapse" id="chatbox">
-        <div class="card" id="chat4">
-            <div class="card-header chat-default-header-bg d-flex align-items-center justify-content-between">
-                <h5> Live Chat</h5>
-                <a  onclick="closeForm()"><i class="bi bi-x text-white "></i></a>
-            </div>
-            <div class="input-group">
-                <input @bind="username" class="form-control" placeholder="What's your name">
-                <button class="btn btn-primary form-control-append" @onclick="Connect">Connect</button>
-            </div>
-        </div>
-    </div>
-    @*    <div class="input-group">
-        <input @bind="username" class="form-control" placeholder="What's your name">
-        <button class="btn btn-primary form-control-append" @onclick="Connect">Connect</button>
-    </div>*@
-}
-else
-{
     <a id="open-button" class="open-button no-fade d-flex align-items-center justify-content-between"
    onclick="openForm()">
         <h5> Live Chat</h5>
         <i class="bi bi-chevron-compact-down"></i>
     </a>
-    <!-- <a class="btn " data-toggle="collapse" href="#collapse1"> collaps</a> -->
     <div class="chat-popup panel-collapse collapse" id="chatbox">
         <div class="card" id="chat4">
             <div class="card-header chat-default-header-bg d-flex align-items-center justify-content-between">
                 <h5> Live Chat</h5>
-                <a  onclick="closeForm()"><i class="bi bi-x text-white "></i></a>
+                <a onclick="closeForm()"><i class="bi bi-x text-white "></i></a>
             </div>
             <div class="card-body perfect-scrollbar" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
                 @((MarkupString)messages)
@@ -113,8 +93,8 @@ else
                  style="width: 40px; height: 100%;" class="me-1">
                 <input type="text bg-white" @bind-value="message" @bind-value:event="oninput" @onkeyup="HandleInput" class="form-control form-control-md" id="exampleFormControlInput3"
                    placeholder="Type message">
-                <a class="ms-1 text-muted" ><i class="bi bi-paperclip"></i></a>
-                <a class="ms-3 text-muted" ><i class="bi bi-emoji-smile"></i></a>
+                <a class="ms-1 text-muted"><i class="bi bi-paperclip"></i></a>
+                <a class="ms-3 text-muted"><i class="bi bi-emoji-smile"></i></a>
                 <a class="ms-3 text-info" @onclick="Send" disabled="@(!IsConnected)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                      fill="currentColor" class="bi bi-send-fill send-default-color" viewBox="0 0 16 16">
@@ -124,43 +104,14 @@ else
             </div>
         </div>
     </div>
-    }
-@*
-<div class="chat-popup panel-collapse collapse d-block" id="chatbox">
-    <div class="card" id="chat4">
-        <div class="card-header chat-default-header-bg d-flex align-items-center justify-content-between">
-            <h5> Live Chat</h5>
-            <a class="cursor-pointer" onclick="closeForm()"><i class="bi bi-x text-white "></i></a>
-        </div>
-        <div class="card-body perfect-scrollbar" data-mdb-perfect-scrollbar="true" id="txtOutput"
-             style="position: relative; height: 400px">
-            <!-- <div class="divider d-flex align-items-center mb-4">
-                <p class="text-center mx-3 mb-0 ">Today</p>
-            </div> -->
-        </div>
-        <div class="card-footer bg-white d-flex justify-content-start align-items-center p-3">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 3"
-                 style="width: 40px; height: 100%;" class="me-1">
-            <input type="text" class="form-control form-control-md bg-white" @bind="message"
-                   placeholder="Type message">
-            <!-- <a class="ms-1 text-muted" href="#!"><i class="bi bi-paperclip"></i></a>
-            <a class="ms-3 text-muted" href="#!"><i class="bi bi-emoji-smile"></i></a> -->
-            <a class="ms-3 text-info cursor-pointer" @onclick="Send">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                     fill="currentColor" class="bi bi-send-fill send-default-color" viewBox="0 0 16 16">
-                    <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z" />
-                </svg>
-            </a>
-        </div>
-    </div>
-</div>*@
+
 @inject IJSRuntime JS;
-@code{
-    private string url = "https://smallyellowleaf69.conveyor.cloud/";
+
+@code {
+    private string url = "https://nextsparklyshop21.conveyor.cloud/";
     private int factN;
     private int factF;
     private string messages = string.Empty;
-    private string username = string.Empty;
     private string message = string.Empty;
     ElementReference TextAreaRef;
     public static string? usrnm;
@@ -171,14 +122,12 @@ else
         var value = await JS.InvokeAsync<string>("localStorage.getItem", "decryptedToken");
         UserDto person = JsonSerializer.Deserialize<UserDto>(value);
 
-
         usrnm = person.Name;
-        username = person.Name;
 
         hubConnection = new HubConnectionBuilder()
         .WithUrl(NavigationManager.ToAbsoluteUri($"/chathub"))
         .Build();
-        hubConnection.On<string, string>("GetThatMessageDude", (username, message) =>
+        hubConnection.On<string, string>("GetThatMessageDude", (usrnm, message) =>
         {
             InvokeAsync(() =>
             {
@@ -191,12 +140,15 @@ else
         });
         await hubConnection.StartAsync();
     }
+
+
     private async Task Send()
     {
         //await hubConnection.StartAsync();
 
         if (hubConnection.ConnectionId != null)
         {
+
             string userId = await JS.InvokeAsync<string>("localStorage.getItem", "sellerId");
             string Pid = await JS.InvokeAsync<string>("localStorage.getItem", "idOfClickedProduct");
             if (Pid == null)
@@ -204,48 +156,63 @@ else
                 Pid = await JS.InvokeAsync<string>("localStorage.getItem", "clickedProduct");
             }
             string from = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
             string conn = hubConnection.ConnectionId;
-            string apiUrl = $"{url}api/Extra/Chat?message={message}&&userId={userId}&&Pid={Pid}&&from={from}&&conn={conn}";
-            //    var values = new Dictionary<string, string>
-            //{
-            //    { "message", message },
-            //    { "userId", userId },
-            //    { "Pid", Pid },
-            //    { "from", from },
-            //    { "conn", conn }
-            //};
 
-            //var content = new FormUrlEncodedContent(values);
+            string apiUrl = $"{url}api/Extra/Chat";
+
+
+            WebChatDto dtoMdl = new()
+            {
+                message = message,
+                userId = userId,
+                Pid = Pid,
+                from = from,
+                conn = conn
+            };
+
+
+            var httpClientHandler = new HttpClientHandler();
+
+#if DEBUG
+            httpClientHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+#endif
+
+            HttpClient client = new HttpClient(httpClientHandler);
+
+            var content = new StringContent(JsonSerializer.Serialize(dtoMdl), System.Text.Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync(apiUrl, content);
+
             SellerDto seller = new();
-            using (var httpClient = new HttpClient())
-            {
-                //Console.WriteLine("api values got there :", userId, Pid, from, conn, apiUrl);
-                var response = await httpClient.PostAsync(apiUrl,null);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    responseContent = responseContent.Replace("\\", "");
-                    seller = JsonSerializer.Deserialize<SellerDto>(responseContent);
-                }
-                else
-                {
-                    Console.WriteLine($"Error: {response.StatusCode}");
-                }
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = await response.Content.ReadAsStringAsync();
+                responseContent = responseContent.Replace("\\", "");
+                seller = JsonSerializer.Deserialize<SellerDto>(responseContent);
             }
-            await hubConnection.SendAsync("AddMessageToChat", username, message, seller.connId);
-            message = string.Empty;
-            hubConnection.On<string, string>("GetThatMessageDude", (username, message) =>
-        {
-            InvokeAsync(() =>
+            else
             {
-                var msg = $"{(string.IsNullOrEmpty(usrnm) ? "" : usrnm + ": ")} {message}";
-                messages += msg + "\n";
-            });
+                var sd = response.StatusCode;
+            }
 
-            //JS.InvokeVoidAsync("scrollToBottom", TextAreaRef);
-            //StateHasChanged();
-        });
+            await hubConnection.SendAsync("AddMessageToChat", usrnm, message, seller.connId);
+
+            StateHasChanged();
+
+            //message = string.Empty;
+            //hubConnection.On<string, string>("GetThatMessageDude", (usrnm, message) =>
+            //{
+            //    InvokeAsync(() =>
+            //    {
+            //        var msg = $"{(string.IsNullOrEmpty(usrnm) ? "" : usrnm + ": ")} {message}";
+            //        messages += msg + "\n";
+            //    });
+
+            //    //JS.InvokeVoidAsync("scrollToBottom", TextAreaRef);
+            //    //StateHasChanged();
+            //});
         }
     }
     private async Task HandleInput(KeyboardEventArgs args)
