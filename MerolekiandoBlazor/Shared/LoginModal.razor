@@ -21,13 +21,13 @@
             </div>
             <div class="modal-body-content d-flex flex-column align-items-center justify-content-start gap-2 mb-2">*@
                @*?flg=face*@
-                <a href="auth/WebLogin"
+                <a href="auth/WebLogin?flg=Facebook"
                     class="custom-log-btn bg-primary rounded-5 text-white text-center p-1 text-decoration-none">
                     <i class="bi bi-facebook float-left"></i>
                     Continue with Facebook
                 </a>
                 @*?flg=goog*@
-                <a href="auth/WebLogin"
+                <a href="auth/WebLogin?flg=Google"
                     class="custom-log-btn bg-primary rounded-5 text-white text-center p-1 text-decoration-none">
                     <i class="bi bi-google float-left"></i>
                     Continue with Google
@@ -58,6 +58,17 @@
                     This site is protected by reCAPTCHA and the <u>GooglePrivacyPolicy,</u> and the
                     <u>Google Terms of Service</u> apply
                 </p>
+                @*<AuthorizeView>
+                    <Authorized>
+                        @foreach (var item in context.User.Claims)
+                        {
+                            <h2>@item.Type @item.Value</h2>
+                        }
+
+                    </Authorized>
+                </AuthorizeView>*@
+                
+
             @*</div>
         </div>
     </div>
@@ -82,5 +93,5 @@
 
         Modal.Show<SignUpModal>("Login/SignUp", options);
     }
-
+    
 }
