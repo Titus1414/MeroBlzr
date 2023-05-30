@@ -74,41 +74,41 @@
 </style>
 <h4>Chat</h4>
 
-    <a id="open-button" class="open-button no-fade d-flex align-items-center justify-content-between"
+<a id="open-button" class="open-button no-fade d-flex align-items-center justify-content-between d-none"
    onclick="openForm()">
-        <h5> Live Chat</h5>
-        <i class="bi bi-chevron-compact-down"></i>
-    </a>
-    <div class="chat-popup panel-collapse collapse" id="chatbox">
-        <div class="card" id="chat4">
-            <div class="card-header chat-default-header-bg d-flex align-items-center justify-content-between">
-                <h5> Live Chat</h5>
-                <a onclick="closeForm()"><i class="bi bi-x text-white "></i></a>
-            </div>
-            <div class="card-body perfect-scrollbar" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
-                @((MarkupString)messages)
-            </div>
-            <div class="card-footer bg-white d-flex justify-content-start align-items-center p-3">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 3"
+    <h5> Live Chat</h5>
+    <i class="bi bi-chevron-compact-down"></i>
+</a>
+<div class="chat-popup panel-collapse collapse" id="chatbox">
+    <div class="card" id="chat4">
+        <div class="card-header chat-default-header-bg d-flex align-items-center justify-content-between">
+            <h5> Live Chat</h5>
+            <a class="cursor-pointer" onclick="closeForm()"><i class="bi bi-x text-white "></i></a>
+        </div>
+        <div class="card-body perfect-scrollbar" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+            @((MarkupString)messages)
+        </div>
+        <div class="card-footer bg-white d-flex justify-content-start align-items-center p-3">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 3"
                  style="width: 40px; height: 100%;" class="me-1">
-                <input type="text bg-white" @bind-value="message" @bind-value:event="oninput" @onkeyup="HandleInput" class="form-control form-control-md" id="exampleFormControlInput3"
+            <input type="text bg-white" @bind-value="message" @bind-value:event="oninput" @onkeyup="HandleInput" class="form-control form-control-md" id="exampleFormControlInput3"
                    placeholder="Type message">
-                <a class="ms-1 text-muted"><i class="bi bi-paperclip"></i></a>
-                <a class="ms-3 text-muted"><i class="bi bi-emoji-smile"></i></a>
-                <a class="ms-3 text-info" @onclick="Send" disabled="@(!IsConnected)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            <a class="ms-1 text-muted"><i class="bi bi-paperclip"></i></a>
+            <a class="ms-3 text-muted"><i class="bi bi-emoji-smile"></i></a>
+            <a class="ms-3 text-info cursor-pointer" @onclick="Send" disabled="@(!IsConnected)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                      fill="currentColor" class="bi bi-send-fill send-default-color" viewBox="0 0 16 16">
-                        <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z" />
-                    </svg>
-                </a>
-            </div>
+                    <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z" />
+                </svg>
+            </a>
         </div>
     </div>
+</div>
 
 @inject IJSRuntime JS;
 
 @code {
-    private string url = "https://nextsparklyshop21.conveyor.cloud/";
+    private string url = "https://lostbrassapple27.conveyor.cloud/";
     private int factN;
     private int factF;
     private string messages = string.Empty;
@@ -139,6 +139,7 @@
             //StateHasChanged();
         });
         await hubConnection.StartAsync();
+        SendConn();
     }
 
 
@@ -149,13 +150,13 @@
         if (hubConnection.ConnectionId != null)
         {
 
-            string userId = await JS.InvokeAsync<string>("localStorage.getItem", "sellerId");
+            string sellerId = await JS.InvokeAsync<string>("localStorage.getItem", "sellerId");
             string Pid = await JS.InvokeAsync<string>("localStorage.getItem", "idOfClickedProduct");
-            if (Pid == null)
+            if (string.IsNullOrEmpty(Pid))
             {
                 Pid = await JS.InvokeAsync<string>("localStorage.getItem", "clickedProduct");
             }
-            string from = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+            string userId = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
 
             string conn = hubConnection.ConnectionId;
 
@@ -163,19 +164,19 @@
 
 
             WebChatDto dtoMdl = new()
-            {
-                message = message,
-                userId = userId,
-                Pid = Pid,
-                from = from,
-                conn = conn
-            };
+                {
+                    message = message,
+                    userId = sellerId,
+                    Pid = Pid,
+                    from = userId,
+                    conn = conn
+                };
 
 
             var httpClientHandler = new HttpClientHandler();
 
 #if DEBUG
-            httpClientHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+    httpClientHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
 #endif
 
             HttpClient client = new HttpClient(httpClientHandler);
@@ -196,7 +197,7 @@
             {
                 var sd = response.StatusCode;
             }
-
+            UpdateSendMsg(usrnm, message);
             await hubConnection.SendAsync("AddMessageToChat", usrnm, message, seller.connId);
 
             StateHasChanged();
@@ -215,6 +216,57 @@
             //});
         }
     }
+    protected async Task SendConn()
+    {
+        // Retrieve data from local storage
+        //string userId = await JS.InvokeAsync<string>("localStorage.getItem", "sellerId");
+        int userId = await JS.InvokeAsync<int>("parseInt", await JS.InvokeAsync<string>("localStorage.getItem", "userId"));
+        int sellerId = await JS.InvokeAsync<int>("parseInt", await JS.InvokeAsync<string>("localStorage.getItem", "sellerId"));
+        string Pid = await JS.InvokeAsync<string>("localStorage.getItem", "idOfClickedProduct");
+        if (string.IsNullOrEmpty(Pid))
+        {
+            Pid = await JS.InvokeAsync<string>("localStorage.getItem", "clickedProduct");
+        }
+        string conn = hubConnection.ConnectionId;
+
+        string urlToSend = $"{url}api/Extra/UpdateConnection?conn={conn}&userId={userId}&sellerId={sellerId}&pId={Convert.ToInt32(Pid)}";
+        // Construct the data to send in the API request
+        //var requestData = new
+        //{
+        //    conn,
+        //    userId
+        //};
+
+        // Serialize the data
+        //var json = JsonSerializer.Serialize(requestData);
+        //var content = new StringContent(json, Encoding.UTF8, "application/json");
+        //var response = await client.PostAsync(apiUrl, content);
+        // Send the API request
+        var httpClientHandler = new HttpClientHandler();
+
+
+        httpClientHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+
+
+        HttpClient client = new HttpClient(httpClientHandler);
+        var response = await client.PostAsync(urlToSend, null);
+
+        // Handle the response if needed
+        if (response.IsSuccessStatusCode)
+        {
+            var responseGot = await response.Content.ReadAsStringAsync();
+        }
+        else
+        {
+            // API request failed
+            var sd = response.StatusCode;
+        }
+    }
+    private void UpdateSendMsg(string usrnm, string message)
+    {
+        messages += $"<div class=\"d-flex flex-row justify-content-start\">\r\n  <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp\"\r\n  alt=\"avatar 1\" style=\"width: 45px; height: 100%;\">\r\n  <div>\r\n  <p class=\"small p-2 ms-3 mb-1 rounded-3 p2-bg\">{usrnm}: {message}</p>\r\n  \r\n  <p class=\"small ms-3 mb-3 rounded-3 text-muted\">23:58</p>\r\n  </div>\r\n  </div>" + "\n";
+    }
+
     private async Task HandleInput(KeyboardEventArgs args)
     {
         //if (args.Key.Equals("Enter"))
@@ -235,6 +287,7 @@
         if (firstRender)
         {
             Connect();
+            //SendConn();
         }
     }
 }

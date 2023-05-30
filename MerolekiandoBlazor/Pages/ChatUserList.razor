@@ -1,0 +1,168 @@
+﻿@page "/ChatUserList"
+@inject NavigationManager NavigationManager
+@using MerolekiandoBlazor.Data;
+@using Microsoft.AspNetCore.SignalR.Client;
+@using System.Text.Json;
+@using System.Net.Http.Headers;
+
+<style>
+    .open-button {
+        background-color: rgba(84, 180, 211, 1);
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.8;
+        position: fixed;
+        bottom: 0px;
+        right: 28px;
+        width: 280px;
+        display: flex;
+    }
+
+        .open-button:hover {
+            color: white;
+            text-decoration: none;
+        }
+    /* The popup chat - hidden by default */
+    .chat-popup {
+        display: none;
+        min-width: 300px;
+        position: fixed;
+        bottom: 0px;
+        right: 15px;
+        border: 3px solid #F1F1F1;
+        z-index: 9;
+    }
+
+    .chat-default-header-bg {
+        background-color: rgba(84, 180, 211, 1);
+        color: white;
+    }
+
+    .chat-default-bg {
+        background-color: rgba(57, 192, 237, 0.2);
+    }
+
+    .p2-bg {
+        background-color: #F5F6F7;
+    }
+
+    .send-default-color {
+        color: rgba(84, 180, 211, 1);
+    }
+
+    .card-body {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+        .card-body::-webkit-scrollbar {
+            width: 6px;
+        }
+        /* Track */
+        .card-body::-webkit-scrollbar-track {
+            background: #F1F1F1;
+        }
+        /* Handle */
+        .card-body::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background: #C1BFBF;
+        }
+            /* Handle on hover */
+            .card-body::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+</style>
+<h4>Chat</h4>
+
+<a id="open-button" class="open-button no-fade d-flex align-items-center justify-content-between"
+   onclick="openForm()">
+    <h5>Chat User List</h5>
+    <i class="bi bi-chevron-compact-down"></i>
+</a>
+<div class="chat-popup panel-collapse collapse" id="chatbox">
+    <div class="card" id="chat4">
+        <div class="card-header chat-default-header-bg d-flex align-items-center justify-content-between">
+            <h5> Live Chat</h5>
+            <a class="cursor-pointer" onclick="closeForm()"><i class="bi bi-x text-white "></i></a>
+        </div>
+        <div class="card-body perfect-scrollbar" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+            @((MarkupString)users)
+        </div>
+        
+    </div>
+</div>
+
+@inject IJSRuntime JS;
+
+@code {
+    private string url = "https://differentshinypencil93.conveyor.cloud/";
+    private string users = string.Empty;
+    protected async Task GetChatUsers()
+    {
+        string token = await JS.InvokeAsync<string>("localStorage.getItem", "encryptedToken");
+
+        var apiUrl = $"{url}api/Extra/GetChatUsers";
+
+        //var httpClientHandler = new HttpClientHandler();
+
+        //httpClientHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+
+        //HttpClient client = new HttpClient(httpClientHandler);
+        var httpClientHandler = new HttpClientHandler();
+        httpClientHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+
+        HttpClient client = new HttpClient(httpClientHandler);
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+        // Send the GET request
+        var response = await client.GetAsync(apiUrl);
+
+        //var response = await httpClient.GetAsync(apiUrl);
+
+        // Initialize the list of chat users
+        List<chatUsersDto> chatUsers = new ();
+
+        // Handle the response if successful
+        if (response.IsSuccessStatusCode)
+        {
+
+            // Deserialize the response content to a list of ChatUser objects
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            responseContent = responseContent.Replace("\\", "");
+            ResultDto responseObject = JsonSerializer.Deserialize<ResultDto>(responseContent);
+
+            var sd = responseObject.result.ToString();
+            chatUsers = JsonSerializer.Deserialize<List<chatUsersDto>>(responseObject.result.ToString());
+
+
+            //chatUsers = responseObject.result;
+            //chatUsers = JsonSerializer.Deserialize<chatUsersDto>(responseContent);
+
+            foreach(var chatUser in chatUsers)
+            {
+                users += $"<div class=\"d-flex flex-row\"> <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp\" alt=\"avatar 1\" style=\"width: 45px; height: 100%;\"> <div style=\"max-width: 235px;\"> <h4>{chatUser.name}</h4> <p class=\"small p-2 ms-3 mb-1 rounded-3 p2-bg\">{chatUser.lastMessage}</p> </div> </div>";
+            }
+
+            
+        }
+        else
+        {
+            // API request failed, handle the error
+            // For example, log the error or show an error message
+        }
+        StateHasChanged();
+        //return chatUsers;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+         GetChatUsers();
+        }
+    }
+
+}

@@ -22,4 +22,18 @@
         public string type { get; set; }
         public string Link { get; set; }
     }
+    public class chatUsersDto
+    {
+        public int id { get; set; }
+        public int? from { get; set; }
+        public int? to { get; set; }
+        public string connId { get; set; }
+        public string lastMessage { get; set; }
+        public string name { get; set; }
+        public bool? read { get; set; }
+        public List<int> productIds { get; set; }
+        public string fromImage { get; set; }
+        public string productImage { get; set; }
+        public long lastMessgeTime { get; set; }
+    }
 }

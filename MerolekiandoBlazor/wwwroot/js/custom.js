@@ -1,4 +1,4 @@
-let link = 'https://nextsparklyshop21.conveyor.cloud/';
+let link = 'https://differentshinypencil93.conveyor.cloud/';
 
 let categories = [];
 let searchKeyWord = null;
@@ -503,7 +503,7 @@ window.onload = function () {
 
         singleProductDetail();
     }
-
+    //updateLoginStatus();
 };
 
 
@@ -535,7 +535,7 @@ function loginUser(event) {
             encryptedToken = localStorage.getItem('encryptedToken');
             //console.log("This is decrypted token:", decryptedToken);
 
-            //updateLoginStatus();
+            updateLoginStatus();
             //loadDefaultProducts();
             refreshPage();
             hideLoader();
@@ -552,6 +552,7 @@ function loginUser(event) {
 
 function refreshPage() {
     location.reload();
+    //updateLoginStatus();
 }
 
 // Check if the session is expired or removed
@@ -565,16 +566,17 @@ function refreshPage() {
 function updateLoginStatus() {
     const loginButton = document.getElementById('loginBtn');
     const logoutButton = document.getElementById('logoutBtn');
+
     encryptedToken = localStorage.getItem('encryptedToken');
-    //const checkToken = localStorage.getItem('encryptedToken');
 
     // Check if the session is expired or removed
-    if (encryptedToken == 'null' || 'undefined') {
+    if (encryptedToken == 'null' || encryptedToken == 'undefined' || encryptedToken == '') {
         // Session is expired or removed
         loginButton.classList.remove('d-none');
         logoutButton.classList.add('d-none');
         localStorage.setItem('userId', '');
         localStorage.setItem('decryptedToken', '');
+        encryptedToken = localStorage.getItem('decryptedToken');
     }
     else {
         //console.log("it is not undefined : ", checkToken);
@@ -582,10 +584,12 @@ function updateLoginStatus() {
         // Session is active
         loginButton.classList.add('d-none');
         logoutButton.classList.remove('d-none');
+        encryptedToken = localStorage.getItem('encryptedToken');
         const decTokenValueCheck = localStorage.getItem('decryptedToken');
         if ((encryptedToken !== 'null' && encryptedToken !== 'undefined') && !decTokenValueCheck) {
             const parsedToken = parseJwt(encryptedToken);
             const decToken = JSON.stringify(parsedToken);
+            localStorage.setItem('userId', decToken.ID);
             localStorage.setItem('decryptedToken', decToken);
 
         }
@@ -597,12 +601,14 @@ function updateLoginStatus() {
 
 function logoutUser() {
     showLoader();
-
     updateLoginStatus();
+    
 
     sessionStorage.removeItem('decodedToken');
     sessionStorage.removeItem('encryptedToken');
     localStorage.removeItem('token');
+    //localStorage.setItem('userId', '');
+    localStorage.removeItem('decryptedToken');
     decryptedTokenValue = localStorage.removeItem('decryptedToken');
     localStorage.removeItem('userId');
     encryptedToken = localStorage.removeItem('encryptedToken');
