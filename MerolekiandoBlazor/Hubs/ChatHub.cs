@@ -13,9 +13,11 @@ namespace MerolekiandoBlazor.Hubs
 
             var connectionId = Context.ConnectionId;
 
-            var httpContext = Context.GetHttpContext();
-            var token = httpContext.Request.Cookies["userId"];
-            var tokeasdfn = httpContext.Request.Cookies["ID"];
+
+
+            //var httpContext = Context.GetHttpContext();
+            //var token = httpContext.Request.Cookies["userId"];
+            //var tokeasdfn = httpContext.Request.Cookies["ID"];
 
 
             await base.OnConnectedAsync();
