@@ -1,4 +1,4 @@
-let link = 'https://differentshinypencil93.conveyor.cloud/';
+let link = 'https://differentsparklybike85.conveyor.cloud/';
 
 let categories = [];
 let searchKeyWord = null;
@@ -8,8 +8,35 @@ let encryptedToken;
 let idOfClickedProduct;
 let fvrtCheck = false;
 let pagecheck = false;
+let currentpage = 1;
+const productsperpage = 18;
 
 const loader = document.getElementById('loader');
+
+function showChatButton()
+{
+    const messageBtn = document.getElementById('open-button');
+    messageBtn.classList.remove('d-none');
+}
+function update() {
+    const btnChat = document.getElementById('chatButton');
+    const msgBtn = document.getElementById('open-button');
+
+    if (pagecheck && encryptedToken) {
+        btnChat.classList.remove('d-none');
+
+    }
+    else {
+        msgBtn.classList.add('d-none');
+        btnChat.classList.add('d-none');
+        //hideLoader();
+    }
+}
+//Chat functionality ends
+function meroLikeandoClicked() {
+    currentpage = 1;
+    showLoader();
+}
 
 function showLoader() {
     loader.style.display = 'flex';
@@ -20,6 +47,7 @@ function hideLoader() {
 }
 
 function loadAPIs() {
+    //debugger
     showLoader();
     fetch(`${link}api/Extra/GetProvinces`)
         .then(response => response.json())
@@ -257,9 +285,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-let currentpage = 1;
-const productsperpage = 18;
+
 function loadDefaultProducts() {
+    //debugger
+    const perpagepro = 18;
     encryptedToken = localStorage.getItem('token');
     localStorage.setItem('productPage', false);
     localStorage.setItem('sellerId', '');
@@ -269,7 +298,7 @@ function loadDefaultProducts() {
     localStorage.setItem('clickedProduct', '');
     idOfClickedProduct = localStorage.getItem('clickedProduct');
     fetch(
-        `${link}api/Product/GetProductsWithOutToken?pageSize=${productsperpage}&pageNumber=${currentpage}`
+        `${link}api/Product/GetProductsWithOutToken?pageSize=${perpagepro}&pageNumber=${currentpage}`
 
     )
         .then((response) => response.json())
@@ -298,7 +327,7 @@ let muncipalityID = 0;
 function setFilters(filterType, catid, subcatid, provncid, muncid) {
     showLoader();
     currentpage = 1;
-    console.log(filterType, catid, subcatid, provncid, muncid);  //To check what we are getting 
+    //console.log(filterType, catid, subcatid, provncid, muncid);  //To check what we are getting 
 
     // Check if values other than filterType are all zero
     if (filterType !== 0 && catid == 0 && subcatid == 0 && provncid == 0 && muncid == 0) {
@@ -356,27 +385,34 @@ function searchValueSave(value) {
 }
 
 function search() {
-    loadProducts();
-    console.log("i'm search");
+    showLoader();
+    currentpage = 1;
+    const proBox = document.querySelector("#products-container");
+    proBox.innerHTML = '';
+        loadProducts();
+    //console.log("i'm search");
 }
 
-function loadProducts() {
+function loadProducts()
+{
     //debugger
     //let currentpage = 1;
     //const productsperpage = 18;
     filterOn = true;
     console.log("current page", currentpage);
-    console.log(categoryID, subCategoryID, provinceID, muncipalityID);
+    console.log("Data to send in filter API", categoryID, subCategoryID, provinceID, muncipalityID, searchKeyWord);
     fetch(
-        `${link}api/Product/GetProductsWithOutTokenByFilters?cat=${categoryID}&subCat=${subCategoryID}&prvnc=${provinceID}&munc=${muncipalityID}&pageSize=${productsperpage}&pageNumber=${currentpage}&search${searchKeyWord}`
+        `${link}api/Product/GetProductsWithOutTokenByFilters?cat=${categoryID}&subCat=${subCategoryID}&prvnc=${provinceID}&munc=${muncipalityID}&pageSize=${productsperpage}&pageNumber=${currentpage}&search=${searchKeyWord}`
     )
     
         .then((response) => response.json())
-        .then((data) => {
+        .then((data) =>
+        {
             //console.log("after refetch", categoryID, subCategoryID, provinceID, muncipalityID, searchKeyWord);
             console.log(data);
             const productscontainer = document.querySelector("#products-container");
-            if (currentpage == 1) {
+            if (currentpage == 1)
+            {
                 productscontainer.innerHTML = '';
             }
             data.result.forEach((product) => {
@@ -410,7 +446,7 @@ function createproductelement(product) {
                 src="${productIMG || ''}"
                  />
             </div>
-            <a id="${product.id}" title="${product.title}" class="text-decoration-none text-dark" onclick="singleProductDetail(id)"
+            <a href="singleproductview" id="${product.id}" title="${product.title}" class="text-decoration-none text-dark" onclick="singleProductDetail(id)"
             href="singleproductview" aria-label="${product.title} ${product.price} in ${product.location}" tabindex="0">
             <div class="product-subtitle1">
                 <p class="product-title m-0 text-no-wrap">
@@ -421,10 +457,10 @@ function createproductelement(product) {
                     <p class="m-0 product-price">$${product.id}</p>
                 
                     </div>
-                <p class="m-0 product-location">oregon city, o</p>
-            </div>
-        </a>
-    </div>
+                    <p class="m-0 product-location">oregon city, o</p>
+                </div>
+            </a>
+        </div>
     `;
     return productElement;
 
@@ -477,8 +513,6 @@ function parseJwt(token) {
 window.addEventListener('beforeunload', function () {
     localStorage.setItem('decryptedToken', decryptedTokenValue);
     localStorage.setItem('encryptedToken', encryptedToken);
-    //localStorage.setItem('checkFvrt', fvrtCheck);
-    //localStorage.setItem('checkFvrt', JSON.stringify(fvrtCheck));
     localStorage.setItem('clickedProduct', idOfClickedProduct);
     if (pagecheck === 'true') {
         localStorage.setItem('productPage', pagecheck);
@@ -486,7 +520,7 @@ window.addEventListener('beforeunload', function () {
     else {
         localStorage.setItem('productPage', pagecheck);
     }
-
+    onReload();
 });
 
 
@@ -499,68 +533,75 @@ window.onload = function () {
     
     pagecheck = localStorage.getItem('productPage');
     //debugger
-    if (pagecheck == 'true') {
-
+    if (pagecheck === 'true')
+    {
+        //debugger
         singleProductDetail();
+        update();
     }
-    //updateLoginStatus();
 };
 
 
 function loginUser(event) {
     event.preventDefault();
-    showLoader();
 
     const emailInput = document.querySelector('#loginemail');
     const passwordInput = document.querySelector('#loginpassword');
     const email = emailInput.value;
     const password = passwordInput.value;
     const logintype = "Custom";
-
-    axios.post(`${link}api/Auth/Login`, {
-        email,
-        password,
-        logintype
-    })
-        .then(response => {
-            //console.log(response);
-            const token = response.data;
-            //console.log(token);
-            const decodedToken = parseJwt(token);
-            const decryptedToken = JSON.stringify(decodedToken);
-            localStorage.setItem('decryptedToken', decryptedToken);
-            localStorage.setItem('encryptedToken', token);
-
-            decryptedTokenValue = localStorage.getItem('decryptedToken');
-            encryptedToken = localStorage.getItem('encryptedToken');
-            //console.log("This is decrypted token:", decryptedToken);
-
-            updateLoginStatus();
-            //loadDefaultProducts();
-            refreshPage();
-            hideLoader();
-            //if (pagecheck === 'true') {
-            //    singleProductDetail();
-            //}
+    if (email && password) {
+        showLoader();
+        axios.post(`${link}api/Auth/Login`, {
+            email,
+            password,
+            logintype
         })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+            .then(response => {
+                //console.log(response);
+                const token = response.data;
+                //console.log(token);
+                const decodedToken = parseJwt(token);
+                const decryptedToken = JSON.stringify(decodedToken);
+                localStorage.setItem('decryptedToken', decryptedToken);
+                localStorage.setItem('encryptedToken', token);
+
+                decryptedTokenValue = localStorage.getItem('decryptedToken');
+                encryptedToken = localStorage.getItem('encryptedToken');
+                //console.log("This is decrypted token:", decryptedToken);
+
+                updateLoginStatus();
+                if (pagecheck == 'true') {
+                    update();
+                    checkIfAlreadyfvrt(encryptedToken);
+                }
+                
+                var modalContainer = document.querySelector('.bm-container');
+                if (modalContainer) {
+                    modalContainer.remove();
+                }
+                hideLoader();
+                
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                hideLoader();
+                alert('Incorrect Email or Password');
+            });
+    }
+    else {
+        alert('Please Input Email and Password');
+    }
+
+    
 }
 
 
 
 function refreshPage() {
     location.reload();
-    //updateLoginStatus();
 }
 
-// Check if the session is expired or removed
-//function isSessionExpired() {
-//    const codedToken = encryptedToken;
-
-//    return !codedToken;
-//}
 
 
 function updateLoginStatus() {
@@ -570,13 +611,15 @@ function updateLoginStatus() {
     encryptedToken = localStorage.getItem('encryptedToken');
 
     // Check if the session is expired or removed
-    if (encryptedToken == 'null' || encryptedToken == 'undefined' || encryptedToken == '') {
+    if (encryptedToken == 'null' || encryptedToken == null || encryptedToken == 'undefined' || encryptedToken == undefined || encryptedToken == '') {
         // Session is expired or removed
         loginButton.classList.remove('d-none');
         logoutButton.classList.add('d-none');
         localStorage.setItem('userId', '');
         localStorage.setItem('decryptedToken', '');
         encryptedToken = localStorage.getItem('decryptedToken');
+
+        
     }
     else {
         //console.log("it is not undefined : ", checkToken);
@@ -593,70 +636,53 @@ function updateLoginStatus() {
             localStorage.setItem('decryptedToken', decToken);
 
         }
+        if (pagecheck === 'true') {
+            checkIfAlreadyfvrt(encryptedToken);
+
+        }
+        
 
     }
 }
 
-
-
 function logoutUser() {
     showLoader();
-    updateLoginStatus();
     
 
     sessionStorage.removeItem('decodedToken');
     sessionStorage.removeItem('encryptedToken');
     localStorage.removeItem('token');
-    //localStorage.setItem('userId', '');
     localStorage.removeItem('decryptedToken');
-    decryptedTokenValue = localStorage.removeItem('decryptedToken');
+    decryptedTokenValue = localStorage.setItem('decryptedToken', undefined);
     localStorage.removeItem('userId');
-    encryptedToken = localStorage.removeItem('encryptedToken');
+    encryptedToken = localStorage.setItem('encryptedToken', undefined);
     fvrtCheck = localStorage.removeItem('checkFvrt'); 
-
-    refreshPage();
-    //if (pagecheck == 'true') {
-    //    singleProductDetail();
-    //}
-    //else {
-    //    loadDefaultProducts()
-    //}
+    updateLoginStatus();
+    update();
+    updateFvrtbtn();
+    hideLoader();
 
 }
 
-//function checklogin() {
-//    if (pagecheck === 'true' && encryptedToken !== 'undefined') {
-//        document.querySelector('#chatButton').classList.add('d-none');
-//    }
-//    else {
-//        document.querySelector('#chatButton').classList.remove('d-none');
-//    }
-//}
 
 async function singleProductDetail(id) {
+    //debugger
     showLoader();
     localStorage.setItem('productPage', true);
     pagecheck = localStorage.getItem('productPage');
+    encryptedToken = localStorage.getItem('encryptedToken');
     let clickedId;
     if (id) {
         clickedId = id;
         localStorage.setItem('clickedProduct', id);
         idOfClickedProduct = localStorage.getItem('clickedProduct');
-        //if (encryptedToken) {
-        //    favourite();
-        //}
-        
     }
     else {
+        idOfClickedProduct = localStorage.getItem('clickedProduct');
         clickedId = idOfClickedProduct;
-        //checkfvrt();
         console.log('refresh id check:');
     }
-    
-    
-    
-    //localStorage.setItem('idOfClickedProduct', id);
-    //idOfClickedProduct = localStorage.getItem('idOfClickedProduct');
+
     try {
         const response = await fetch(`${link}api/Product/GetProductsById?id=${clickedId}`);
         const data = await response.json();
@@ -712,13 +738,8 @@ async function singleProductDetail(id) {
         const sellerName = await getSellerName(sellerID);
         const productCategory = await getSingleProductCategory(categoryID);
 
-        //const tkn = localStorage.getItem('encryptedToken');
-        //sendDecryptedToken(id, encryptedToken);
-
-        
 
         prductSeller.textContent = sellerName;
-        //checklogin();
         productCat.textContent = "Category : " + productCategory;
         const reported = productDetails.isReported;
         if (reported && pagecheck === 'true') {
@@ -728,21 +749,22 @@ async function singleProductDetail(id) {
             return;
         }
         //debugger
-        //if (pagecheck === 'true' && encryptedToken !== 'undefined') {
-        //    checkIfAlreadyfvrt(encryptedToken);
+        if (pagecheck === 'true' && (encryptedToken !== null && encryptedToken !== 'null' && encryptedToken !== '' && encryptedToken)) {
+            checkIfAlreadyfvrt(encryptedToken);
+        }
+        else {
+            hideLoader();
+            return;
+        }
 
-        //}
-        //else {
-        //    hideLoader();
-        //}
-        
-        hideLoader();
-    } catch (error) {
+    } catch (error)
+    {
         console.error('Error:', error);
     }
 }
     
-async function getSellerName(productID) {
+async function getSellerName(productID)
+{
     const response = await fetch(`${link}api/Auth/GetUsersByIdWithOutToken?id=${productID}`);
     const data = await response.json();
     const sellerName = data.result.name;
@@ -750,7 +772,8 @@ async function getSellerName(productID) {
     return sellerName;
 }
 
-async function getSingleProductCategory(productID) {
+async function getSingleProductCategory(productID)
+{
     const response = await fetch(`${link}api/Extra/GetCategoryByIdWOT?id=${productID}`);
     const data = await response.json();
     //console.log("result from category function", data);
@@ -761,9 +784,11 @@ async function getSingleProductCategory(productID) {
 }
 
 //Product Image change onclick
-function changeMainImage(button) {
+function changeMainImage(button)
+{
     const buttons = document.querySelectorAll('.btn-link');
-    buttons.forEach((btn) => {
+    buttons.forEach((btn) =>
+    {
         btn.classList.remove('active');
     });
 
@@ -774,43 +799,53 @@ function changeMainImage(button) {
     const mainImage = document.getElementById('mainProductImage');
     mainImage.src = imageUrl;
 }
-function checkIfAlreadyfvrt(token) {
+function checkIfAlreadyfvrt(token)
+{
     //console.log(id, token);
     console.log("inside new func", token);
-    /*debugger*/
-    if (token !== 'undefined') {
-        axios.get(`${link}api/Product/GetFavProducts`, {
-            headers: {
+    //debugger
+    if (token)
+    {
+        axios.get(`${link}api/Product/GetFavProducts`,
+        {
+                headers:
+            {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'
             }
         })
-            .then(response => {
+            .then(response =>
+            {
                 // Handle the response
                 const fvrtRspns = response.data.result;
                 //console.log("here in fvrt we can use check disabled :", fvrtRspns);
                 //debugger
                 const idClicked = parseInt(idOfClickedProduct, 10);
-                const result = fvrtRspns.map((element) => {
-                    if (element.id === idClicked) {
+                const result = fvrtRspns.map((element) =>
+                {
+                    if (element.id === idClicked)
+                    {
                         return true;
                     }
                     return false;
                 });
 
-                if (result.includes(true)) {
+                if (result.includes(true))
+                {
                     localStorage.setItem('checkFvrt', true);
                     fvrtCheck = localStorage.getItem('checkFvrt');
-                    checkfvrt();
-                } else {
+                    updateFvrtbtn();
+                } else
+                {
                     localStorage.setItem('checkFvrt', false);
                     fvrtCheck = localStorage.getItem('checkFvrt');
-                    checkfvrt();
+                    updateFvrtbtn();
                 }
-                hideLoader();
+                //hideLoader();
             })
 
-            .catch(error => {
+            .catch(error =>
+            {
                 // Handle the error
                 console.error('Error:', error);
                 hideLoader();
@@ -820,44 +855,46 @@ function checkIfAlreadyfvrt(token) {
 }
 
 
-function favourite() {
+function favourite()
+{
     showLoader();
-    //event.preventDefault();
-    //const id = localStorage.getItem('clickedProduct');
     const id = idOfClickedProduct;
-    //const token = localStorage.getItem('encryptedToken');
-    //fvrtCheck = JSON.parse(localStorage.getItem('checkFvrt'));
-    console.log("this is in favourite function for fvrtcheck in localStorage", fvrtCheck);
-    //console.log("this is token without any value to show alert", token);
-    if (encryptedToken === 'undefined') {
+    const token = localStorage.getItem('encryptedToken');
+    
+    if (!encryptedToken)
+    {
         alert('Login First');
         hideLoader();
     }
     
-    else {
-        sendDecryptedToken(id, encryptedToken);
+    else
+    {
+        sendDecryptedToken(id, token);
     }
 }          
-function sendDecryptedToken(id, token) {
+function sendDecryptedToken(id, token)
+{
     console.log(id, token);
     
-    axios.post(`${link}api/Auth/SetFavProduct?id=${id}`, null, {
-        headers: {
+    axios.post(`${link}api/Auth/SetFavProduct?id=${id}`, null,
+    {
+            headers:
+        {
             'Authorization': 'Bearer ' + token,
             'Content-Type': 'application/json'
         }
     })
        
-        .catch(error => {
+        .catch(error =>
+        {
             // Handle the error
             console.error('Error:', error);
         });
-    localStorage.setItem('checkFvrt', false);
-    fvrtCheck = localStorage.getItem('checkFvrt');
-    /*const checkfvrttoken = localStorage.getItem('encryptedToken');*/
+    
     checkIfAlreadyfvrt(token);
 }
-function checkfvrt() {
+function updateFvrtbtn()
+{
     //fvrtCheck =localStorage.getItem('checkFvrt');
     
     favort = fvrtCheck;
@@ -866,7 +903,6 @@ function checkfvrt() {
         //console.log('helllllllllo');
         const firstfvrtbtn = document.getElementById('product-save');
         const fvrtbtn = document.getElementById('fvrtBtn');
-        //const fvrticon = document.getElementById('fvrtBtnIcon');
 
         firstfvrtbtn.classList.add('text-danger');
         firstfvrtbtn.innerHTML = '';
@@ -881,14 +917,11 @@ function checkfvrt() {
                             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                         </svg>
                         UnSave`;
-
-
-        //fvrticon.classList.add('text-danger');
     }
-    else  {
+    else
+    {
         const firstfvrtbtn = document.getElementById('product-save');
         const fvrtbtn = document.getElementById('fvrtBtn');
-
 
         firstfvrtbtn.classList.remove('text-danger');
         firstfvrtbtn.innerHTML = '';
@@ -904,28 +937,26 @@ function checkfvrt() {
                             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                         </svg>
                         Save`;
-
-
     }
 }
 
-// Report Product function
-//function onLoadReportCheck() {
-
-//}
-async function sendProductReport() {
+async function sendProductReport()
+{
     showLoader();
     token = encryptedToken;
-    //id = idOfClickedProduct;
     const apiUrl = `${link}api/Product/ProductReport`;
-    const requestData = {
+    const requestData =
+    {
         id: idOfClickedProduct,
         isReport: true
     };
 
-    try {
-        const response = await axios.post(apiUrl, requestData, {
-            headers: {
+    try
+    {
+        const response = await axios.post(apiUrl, requestData,
+        {
+            headers:
+            {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
             }
@@ -936,7 +967,8 @@ async function sendProductReport() {
         const isReport = responseData.result.isReported;
         console.log(isReport);
 
-        if (isReport) {
+        if (isReport)
+        {
             reportBtnUpdate(isReport);
             console.log('The report is true');
             hideLoader();
@@ -944,35 +976,26 @@ async function sendProductReport() {
             console.log('The report is false');
             hideLoader();
         }
-    } catch (error) {
+    } catch (error)
+    {
         console.error('Error:', error);
+        hideLoader();
+
     }
 }
 
-function reportBtnUpdate(isReport) {
+function reportBtnUpdate(isReport)
+{
     const btnToDisable = document.getElementById('reportBtn');
     const disabledBtn = document.getElementById('reportDisabled');
  
-    if (isReport) {
+    if (isReport)
+    {
         btnToDisable.classList.add('d-none');
         disabledBtn.classList.remove('d-none');
         disabledBtn.classList.add('d-block');
 
     }
-    //else {
-    //    btn.classList.remove('disabled');
-    //    btnToDisable.removeAttribute('aria-disabled', true);
-    //}
-    
 }
 
-//const sendMessage = async () => {
-//    const loginUserID = localStorage.getItem('userId');
-//    try {
-//        const response = await connection.invoke('SendMessage', user, message);
-//        console.log('Response:', response);
-//    } catch (error) {
-//        console.log(error);
-//    }
-//}
 

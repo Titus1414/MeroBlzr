@@ -514,3 +514,70 @@
         width: calc(100% / 5 - 1rem) !important;
     }
 }
+.open-button {
+    background-color: rgba(84, 180, 211, 1);
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 0px;
+    right: 28px;
+    width: 280px;
+    display: flex;
+}
+
+    .open-button:hover {
+        color: white;
+        text-decoration: none;
+    }
+/* The popup chat - hidden by default */
+.chat-popup {
+    display: none;
+    min-width: 300px;
+    position: fixed;
+    bottom: 0px;
+    right: 15px;
+    border: 3px solid #F1F1F1;
+    z-index: 9;
+}
+
+.chat-default-header-bg {
+    background-color: rgba(84, 180, 211, 1);
+    color: white;
+}
+
+.chat-default-bg {
+    background-color: rgba(57, 192, 237, 0.2);
+}
+
+.p2-bg {
+    background-color: #F5F6F7;
+}
+
+.send-default-color {
+    color: rgba(84, 180, 211, 1);
+}
+
+.card-body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+    .card-body::-webkit-scrollbar {
+        width: 6px;
+    }
+    /* Track */
+    .card-body::-webkit-scrollbar-track {
+        background: #F1F1F1;
+    }
+    /* Handle */
+    .card-body::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: #C1BFBF;
+    }
+        /* Handle on hover */
+        .card-body::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }

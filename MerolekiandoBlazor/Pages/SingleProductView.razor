@@ -3,7 +3,7 @@
 @page "/singleproductview"
 
 <PageTitle>Product</PageTitle>
-<Navbar/>
+@*<Navbar/>*@
 <div class="container-fluid px-0">
     <div class="banner row m-0 mb-2">
         <div class="col-12 d-flex flex-md-row flex-column align-items-center justify-content-center">
@@ -104,9 +104,9 @@
                 <p id="product-category">Category : </p>
             </div>
             <div class="d-md-block d-none">
-                <button id="chatButton" onclick="openForm()"
-                class="btn default-bg default-hover-bg text-white rounded-5 w-100 font-weight-bold">
-                    Message Seller
+                <button id="chatButton" onclick="showChatButton()"
+                class="btn default-bg default-hover-bg text-white rounded-5 w-100 font-weight-bold d-none">
+                    Message
                 </button>
                 <button class="btn border border-success text-success rounded-5 w-100 mt-2 font-weight-bold font-smaller">
                     Ask
@@ -600,7 +600,7 @@
 </div>
 
 @*<ChatPage></ChatPage>*@
-<ChatUserList></ChatUserList>
+<ChatPopUp></ChatPopUp>
 @inject IJSRuntime JS
 @code {
     @*private int currentCount = 0;

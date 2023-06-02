@@ -1,98 +1,56 @@
-﻿@page "/chatpage"
+﻿@page "/ChatPage"
 @inject NavigationManager NavigationManager
 @using MerolekiandoBlazor.Data;
 @using Microsoft.AspNetCore.SignalR.Client;
 @using System.Text.Json;
+@using System.Net.Http.Headers;
 
-<style>
-    .open-button {
-        background-color: rgba(84, 180, 211, 1);
-        color: white;
-        padding: 16px 20px;
-        border: none;
-        cursor: pointer;
-        opacity: 0.8;
-        position: fixed;
-        bottom: 0px;
-        right: 28px;
-        width: 280px;
-        display: flex;
-    }
-
-        .open-button:hover {
-            color: white;
-            text-decoration: none;
-        }
-    /* The popup chat - hidden by default */
-    .chat-popup {
-        display: none;
-        position: fixed;
-        bottom: 0px;
-        right: 15px;
-        border: 3px solid #F1F1F1;
-        z-index: 9;
-    }
-
-    .chat-default-header-bg {
-        background-color: rgba(84, 180, 211, 1);
-        color: white;
-    }
-
-    .chat-default-bg {
-        background-color: rgba(57, 192, 237, 0.2);
-    }
-
-    .p2-bg {
-        background-color: #F5F6F7;
-    }
-
-    .send-default-color {
-        color: rgba(84, 180, 211, 1);
-    }
-
-    .card-body {
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-        .card-body::-webkit-scrollbar {
-            width: 6px;
-        }
-        /* Track */
-        .card-body::-webkit-scrollbar-track {
-            background: #F1F1F1;
-        }
-        /* Handle */
-        .card-body::-webkit-scrollbar-thumb {
-            border-radius: 5px;
-            background: #C1BFBF;
-        }
-            /* Handle on hover */
-            .card-body::-webkit-scrollbar-thumb:hover {
-                background: #555;
-            }
-</style>
-<h4>Chat</h4>
-
-<a id="open-button" class="open-button no-fade d-flex align-items-center justify-content-between d-none"
-   onclick="openForm()">
-    <h5> Live Chat</h5>
-    <i class="bi bi-chevron-compact-down"></i>
-</a>
-<div class="chat-popup panel-collapse collapse" id="chatbox">
     <div class="card" id="chat4">
         <div class="card-header chat-default-header-bg d-flex align-items-center justify-content-between">
             <h5> Live Chat</h5>
-            <a class="cursor-pointer" onclick="closeForm()"><i class="bi bi-x text-white "></i></a>
+        <a class="cursor-pointer" @onclick="()=> OpenChatList()"><i class="bi bi-x text-white "></i></a>
         </div>
-        <div class="card-body perfect-scrollbar" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
-            @((MarkupString)messages)
-        </div>
+        <div class="card-body perfect-scrollbar" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px" id="msg-Container">
+           
+        @if(lst.Count > 0)
+        {
+           
+            @foreach (var msg in lst)
+            {
+                if(msg.senderId != msg.recieverId)
+                {
+                    if (chatUser == msg.recieverId)
+                    {
+                        <div class="d-flex flex-row justify-content-start my-2" id="@msg.senderId">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp"
+                                 alt="avatar 1" style="width: 45px; height: 100%;">
+                            <div style="max-width: 235px;">
+                                <p class="small p-2 ms-3 mb-1 rounded-3 p2-bg">@msg.message</p>
+                            </div>
+                        </div>
+                    }
+                    else if (chatUser == msg.senderId)
+                    {
+                        <div class="d-flex flex-row justify-content-end my-2 pt-1" id="@msg.recieverId">
+                            <div style="max-width: 235px;">
+                                <p class="small p-2 me-3 mb-1  rounded-3 chat-default-bg">@msg.message</p>
+                            </div>
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                 alt="avatar 1" style="width: 45px; height: 100%;">
+                        </div>
+                    }
+                }
+                
+            }
+        }
+        @((MarkupString)messages)
+       
+    </div>
         <div class="card-footer bg-white d-flex justify-content-start align-items-center p-3">
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 3"
                  style="width: 40px; height: 100%;" class="me-1">
             <input type="text bg-white" @bind-value="message" @bind-value:event="oninput" @onkeyup="HandleInput" class="form-control form-control-md" id="exampleFormControlInput3"
-                   placeholder="Type message">
+                   placeholder="Type message" required>
             <a class="ms-1 text-muted"><i class="bi bi-paperclip"></i></a>
             <a class="ms-3 text-muted"><i class="bi bi-emoji-smile"></i></a>
             <a class="ms-3 text-info cursor-pointer" @onclick="Send" disabled="@(!IsConnected)">
@@ -103,12 +61,15 @@
             </a>
         </div>
     </div>
-</div>
+
 
 @inject IJSRuntime JS;
 
 @code {
-    private string url = "https://lostbrassapple27.conveyor.cloud/";
+    //public List<ChatUser> variablepased { get; set; }
+    [Parameter]
+    public EventCallback OnUserChatClose { get; set; }
+    private string url = "https://differentsparklybike85.conveyor.cloud/";
     private int factN;
     private int factF;
     private string messages = string.Empty;
@@ -116,13 +77,27 @@
     ElementReference TextAreaRef;
     public static string? usrnm;
     private HubConnection? hubConnection;
+    PreviousChatDto responseObject = new();
+
+    List<Result> lst = new();
+
+    private int chatUser;
+    private int sender;
+
+    
 
     private async Task Connect()
     {
         var value = await JS.InvokeAsync<string>("localStorage.getItem", "decryptedToken");
+
+
+        //GetChatById(idOfChat, token);
+
+
         UserDto person = JsonSerializer.Deserialize<UserDto>(value);
 
         usrnm = person.Name;
+        //chatUser = int.Parse(usrnm);
 
         hubConnection = new HubConnectionBuilder()
         .WithUrl(NavigationManager.ToAbsoluteUri($"/chathub"))
@@ -139,9 +114,59 @@
             //StateHasChanged();
         });
         await hubConnection.StartAsync();
+
         SendConn();
+
     }
 
+
+    private async Task GetChatById()
+    {
+        int idOfChat = await JS.InvokeAsync<int>("parseInt", await JS.InvokeAsync<string>("localStorage.getItem", "currentChatId"));
+        sender = await JS.InvokeAsync<int>("parseInt", await JS.InvokeAsync<string>("localStorage.getItem", "sellerId"));
+        string token = await JS.InvokeAsync<string>("localStorage.getItem", "encryptedToken");
+        var newUrl = $"{url}api/Extra/GetChatById?id={idOfChat}";
+        try
+        {
+            var httpClientHandler = new HttpClientHandler();
+            httpClientHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+
+            HttpClient client = new HttpClient(httpClientHandler);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            // Send the GET request
+            var response = await client.GetAsync($"{newUrl}");
+
+            // Check if the request was successful
+            response.EnsureSuccessStatusCode();
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            responseContent = responseContent.Replace("\\", "");
+            responseObject = JsonSerializer.Deserialize<PreviousChatDto>(responseContent);
+
+            foreach (var item in responseObject.result)
+            {
+                Result dto = new();
+                dto.link = item.link;
+                dto.message = item.message;
+                dto.time = item.time;
+                dto.id = item.id;
+                dto.senderId = item.senderId;
+                dto.recieverId = dto.recieverId;
+
+                lst.Add(dto);
+            }
+
+
+            StateHasChanged();
+            Connect();
+
+        }
+        catch (Exception ex)
+        {
+            // Handle any exceptions that occurred during the request
+            // You can display an error message or perform any desired error handling
+        }
+    }
 
     private async Task Send()
     {
@@ -199,27 +224,13 @@
             }
             UpdateSendMsg(usrnm, message);
             await hubConnection.SendAsync("AddMessageToChat", usrnm, message, seller.connId);
-
+            message = "";
             StateHasChanged();
 
-            //message = string.Empty;
-            //hubConnection.On<string, string>("GetThatMessageDude", (usrnm, message) =>
-            //{
-            //    InvokeAsync(() =>
-            //    {
-            //        var msg = $"{(string.IsNullOrEmpty(usrnm) ? "" : usrnm + ": ")} {message}";
-            //        messages += msg + "\n";
-            //    });
-
-            //    //JS.InvokeVoidAsync("scrollToBottom", TextAreaRef);
-            //    //StateHasChanged();
-            //});
         }
     }
     protected async Task SendConn()
     {
-        // Retrieve data from local storage
-        //string userId = await JS.InvokeAsync<string>("localStorage.getItem", "sellerId");
         int userId = await JS.InvokeAsync<int>("parseInt", await JS.InvokeAsync<string>("localStorage.getItem", "userId"));
         int sellerId = await JS.InvokeAsync<int>("parseInt", await JS.InvokeAsync<string>("localStorage.getItem", "sellerId"));
         string Pid = await JS.InvokeAsync<string>("localStorage.getItem", "idOfClickedProduct");
@@ -230,17 +241,7 @@
         string conn = hubConnection.ConnectionId;
 
         string urlToSend = $"{url}api/Extra/UpdateConnection?conn={conn}&userId={userId}&sellerId={sellerId}&pId={Convert.ToInt32(Pid)}";
-        // Construct the data to send in the API request
-        //var requestData = new
-        //{
-        //    conn,
-        //    userId
-        //};
 
-        // Serialize the data
-        //var json = JsonSerializer.Serialize(requestData);
-        //var content = new StringContent(json, Encoding.UTF8, "application/json");
-        //var response = await client.PostAsync(apiUrl, content);
         // Send the API request
         var httpClientHandler = new HttpClientHandler();
 
@@ -264,7 +265,8 @@
     }
     private void UpdateSendMsg(string usrnm, string message)
     {
-        messages += $"<div class=\"d-flex flex-row justify-content-start\">\r\n  <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp\"\r\n  alt=\"avatar 1\" style=\"width: 45px; height: 100%;\">\r\n  <div>\r\n  <p class=\"small p-2 ms-3 mb-1 rounded-3 p2-bg\">{usrnm}: {message}</p>\r\n  \r\n  <p class=\"small ms-3 mb-3 rounded-3 text-muted\">23:58</p>\r\n  </div>\r\n  </div>" + "\n";
+        messages += $"<div class=\"d-flex flex-row justify-content-start\">\r\n  <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp\"\r\n  alt=\"avatar 1\" style=\"width: 45px; height: 100%;\">\r\n  <div>\r\n  <p class=\"small p-2 ms-3 mb-1 rounded-3 p2-bg\">{message}</p>\r\n  \r\n  <p class=\"small ms-3 mb-3 rounded-3 text-muted\">23:58</p>\r\n  </div>\r\n  </div>" + "\n";
+        
     }
 
     private async Task HandleInput(KeyboardEventArgs args)
@@ -286,8 +288,15 @@
     {
         if (firstRender)
         {
-            Connect();
-            //SendConn();
+            GetChatById();
+            
         }
+    }
+    public async Task OpenChatList()
+    {
+
+        await OnUserChatClose.InvokeAsync();
+
+
     }
 }
