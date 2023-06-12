@@ -1,7 +1,7 @@
-let link = 'https://differentsparklybike85.conveyor.cloud/';
+let link = 'https://wideorangeshop42.conveyor.cloud/';
 
 let categories = [];
-let searchKeyWord = null;
+let searchKeyWord = "";
 let filterOn = false;
 let decryptedTokenValue;
 let encryptedToken;
