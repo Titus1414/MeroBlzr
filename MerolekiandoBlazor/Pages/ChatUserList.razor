@@ -34,9 +34,17 @@
     [Parameter]
     public EventCallback OnUserClicked { get; set; }
     
-    private string url = "https://differentsparklybike85.conveyor.cloud/";
+    private string url = "https://smallmintpage33.conveyor.cloud/";
     private string users = string.Empty;
     List<chatUsersDto> chatUsers = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            GetChatUsers();
+        }
+    }
     protected async Task GetChatUsers()
     {
         string token = await JS.InvokeAsync<string>("localStorage.getItem", "encryptedToken");
@@ -86,6 +94,8 @@
         StateHasChanged();
         //return chatUsers;
     }
+
+    
     
     public async Task SaveIdToLocalStorage(int id)
     {
@@ -100,12 +110,6 @@
     {
         await OnUserClicked.InvokeAsync();
     }
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            GetChatUsers();
-        }
-    }
+    
 
 }

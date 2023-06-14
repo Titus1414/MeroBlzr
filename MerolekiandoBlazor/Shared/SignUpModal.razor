@@ -14,7 +14,8 @@
 <a href="#signin-modal" class="nav-link my-2" data-bs-toggle="modal">
     <h6 class="default-color">Don't Have an Account? Signup</h6>
 </a>
-<button class="btn border border-success text-success my-2 rounded-5 w-100 font-weight-bold font-smaller" type="submit" onclick="loginUser(event)">
+<button class="btn border border-success text-success my-2 rounded-5 w-100 font-weight-bold font-smaller" type="submit" @onclick="@(() => Close())">
+   @*onclick="loginUser(event)"*@
     Login
 </button>
 
@@ -29,10 +30,22 @@
 
 
 @code {
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
 
     [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; } = default!;
 
-    async Task Close() => await BlazoredModal.CloseAsync(ModalResult.Ok(true));
+    //async Task Close() => await BlazoredModal.CloseAsync(ModalResult.Ok(true));
+    private async Task Close()
+    {
+        // Call the JavaScript function
+        await JSRuntime.InvokeAsync<object>("loginUser");
+
+        // Call the Blazor function to close the modal
+        await BlazoredModal.CloseAsync(ModalResult.Ok(true));
+
+        
+    }
     async Task Cancel() => await BlazoredModal.CancelAsync();
 
 }

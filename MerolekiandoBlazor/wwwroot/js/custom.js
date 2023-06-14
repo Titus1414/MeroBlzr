@@ -1,4 +1,4 @@
-let link = 'https://wideorangeshop42.conveyor.cloud/';
+let link = 'https://smallmintpage33.conveyor.cloud/';
 
 let categories = [];
 let searchKeyWord = "";
@@ -21,8 +21,8 @@ function showChatButton()
 function update() {
     const btnChat = document.getElementById('chatButton');
     const msgBtn = document.getElementById('open-button');
-
-    if (pagecheck && encryptedToken) {
+    const currentUserId = localStorage.getItem('userId');
+    if (pagecheck && currentUserId) {
         btnChat.classList.remove('d-none');
 
     }
@@ -34,8 +34,11 @@ function update() {
 }
 //Chat functionality ends
 function meroLikeandoClicked() {
-    currentpage = 1;
     showLoader();
+    currentpage = 1;
+    window;
+
+    //loadDefaultProducts();
 }
 
 function showLoader() {
@@ -251,7 +254,7 @@ function getMunicipalities(provinceId) {
                     return;
                 }
                 else {
-                    console.log("no id match");
+                    //console.log("no id match");
                 }
 
             });
@@ -304,19 +307,23 @@ function loadDefaultProducts() {
         .then((response) => response.json())
         .then((data) => {
             //console.log(data);
-            // append the new products to the existing list
             const productscontainer = document.querySelector("#products-container");
             //productscontainer.innerHTML = '';
-            data.result.forEach((product) => {
-                const productElement = createproductelement(product);
-                productscontainer.appendChild(productElement);
-            });
-            // increment the current page number
-            currentpage++;
-            //console.log(currentpage);
-            hideLoader();
+
+            const productPromises = data.result.map((product) => createproductelement(product));
+            Promise.all(productPromises)
+                .then((productElements) => {
+                    productElements.forEach((productElement) => {
+                        productscontainer.appendChild(productElement);
+                    });
+                    currentpage++;
+                    hideLoader();
+                })
+                .catch((error) => {
+                    console.error("Error creating product elements:", error);
+                });
         });
-    
+
 
 }
 
@@ -337,7 +344,7 @@ function setFilters(filterType, catid, subcatid, provncid, muncid) {
 
         if (filterType === 1) {
 
-            console.log("filter 1");
+            //console.log("filter 1");
 
             if (catid !== 0) {
                 categoryID = catid;
@@ -381,7 +388,7 @@ function searchValueSave(value) {
         muncipalityID = 0;
         
     }
-    console.log("value saved...", searchKeyWord);
+   // console.log("value saved...", searchKeyWord);
 }
 
 function search() {
@@ -396,74 +403,77 @@ function search() {
 function loadProducts()
 {
     //debugger
-    //let currentpage = 1;
-    //const productsperpage = 18;
     filterOn = true;
-    console.log("current page", currentpage);
-    console.log("Data to send in filter API", categoryID, subCategoryID, provinceID, muncipalityID, searchKeyWord);
+    //console.log("current page", currentpage);
+    //console.log("Data to send in filter API", categoryID, subCategoryID, provinceID, muncipalityID, searchKeyWord);
     fetch(
         `${link}api/Product/GetProductsWithOutTokenByFilters?cat=${categoryID}&subCat=${subCategoryID}&prvnc=${provinceID}&munc=${muncipalityID}&pageSize=${productsperpage}&pageNumber=${currentpage}&search=${searchKeyWord}`
     )
     
         .then((response) => response.json())
-        .then((data) =>
-        {
-            //console.log("after refetch", categoryID, subCategoryID, provinceID, muncipalityID, searchKeyWord);
-            console.log(data);
+        .then(async (data) => {
+           // console.log(data);
             const productscontainer = document.querySelector("#products-container");
-            if (currentpage == 1)
-            {
+            if (currentpage == 1) {
                 productscontainer.innerHTML = '';
             }
-            data.result.forEach((product) => {
-                const productElement = createproductelement(product);
+            for (const product of data.result) {
+                const productElement = await createproductelement(product);
                 productscontainer.appendChild(productElement);
-            });
-            // increment the current page number
+            }
             currentpage++;
             hideLoader();
-            
         });
+
 }
 
- //function to create a product element
+ 
 function createproductelement(product) {
-    
-    //debugger
     let productIMG = product.image;
-   // if (filterOn === false) {
-        const imageUrls = product.prodImages.map((imageObj) => imageObj.image);
-        productIMG = "https://merolikeando.com" + imageUrls[0];
-        //console.log(productIMG);
-    //}
-    const productElement = document.createElement("div");
-    productElement.classList.add("col-6", "col-md-2", "col-sm-3", "px-2", "mb-3");
-    productElement.innerHTML = `
-        <div class="product-box d-flex flex-column justify-content-center">
+    const imageUrls = product.prodImages.map((imageObj) => imageObj.image);
+    productIMG = "https://merolikeando.com" + imageUrls[0];
 
-            <div class="product-img-box rounded-1 overflow-hidden">
-                <img class="w-100 img-fluid"
-                src="${productIMG || ''}"
-                 />
-            </div>
-            <a href="singleproductview" id="${product.id}" title="${product.title}" class="text-decoration-none text-dark" onclick="singleProductDetail(id)"
-            href="singleproductview" aria-label="${product.title} ${product.price} in ${product.location}" tabindex="0">
-            <div class="product-subtitle1">
-                <p class="product-title m-0 text-no-wrap">
-                    ${product.title}
-                </p>
-                <div class="price-box">
-                
-                    <p class="m-0 product-price">$${product.id}</p>
-                
-                    </div>
-                    <p class="m-0 product-location">oregon city, o</p>
+    const proID = product.subCategoryId;
+    const proCatPromise = getSubCategoryById(proID); // getSubCategoryById returns a Promise
+
+    return proCatPromise.then(function (proCat) {
+        //console.log("category returned:", proCat);
+
+        const productElement = document.createElement("div");
+        productElement.classList.add("col-6", "col-md-2", "col-sm-3", "px-2", "mb-3");
+        productElement.innerHTML = `
+                <a href="singleproductview" id="${product.id}" title="${product.title}" class="text-decoration-none text-dark" onclick="singleProductDetail(id)" aria-label="${product.title} ${product.price} in ${product.location}" tabindex="0">
+            <div class="product-box d-flex flex-column justify-content-center">
+                <div class="product-img-box rounded-1 overflow-hidden">
+                    <img class="w-100 img-fluid" src="${productIMG || ''}" />
                 </div>
-            </a>
-        </div>
-    `;
-    return productElement;
+                    <div class="product-subtitle1">
+                        <p class="product-title m-0 text-no-wrap">${product.title}</p>
+                        <div class="price-box">
+                            <p class="m-0 product-price">$${product.price}</p>
+                        </div>
+                        <p class="m-0 product-location">${proCat}</p>
+                    </div>
+                </a>
+            </div>
+        `;
+        return productElement;
+    });
+}
 
+async function getSubCategoryById(id) {
+    try {
+        const response = await fetch(`${link}api/Extra/GetSubCategoryByIdWOT?id=${id}`);
+        const data = await response.json();
+        //console.log("category data:", data);
+        if (data.result) { 
+        const nameReturned = data.result.name;
+            return nameReturned;
+        }
+    } catch (error) {
+        console.log("Error:", error);
+        throw error;
+    }
 }
 
 
@@ -525,25 +535,42 @@ window.addEventListener('beforeunload', function () {
 
 
 // load data on page refresh
+//window.onload = function () {
+//    currentpage = 1;
+//    decryptedTokenValue = localStorage.getItem('decryptedToken');
+//    encryptedToken = localStorage.getItem('encryptedToken');
+//    idOfClickedProduct = localStorage.getItem('clickedProduct');
+
+//    pagecheck = localStorage.getItem('productPage');
+//    //debugger
+//    if (pagecheck === 'true')
+//    {
+//        //debugger
+//        singleProductDetail();
+//        update();
+//    }
+//};
 window.onload = function () {
     currentpage = 1;
-    decryptedTokenValue = localStorage.getItem('decryptedToken');
-    encryptedToken = localStorage.getItem('encryptedToken');
-    idOfClickedProduct = localStorage.getItem('clickedProduct');
-    
-    pagecheck = localStorage.getItem('productPage');
-    //debugger
-    if (pagecheck === 'true')
-    {
-        //debugger
-        singleProductDetail();
-        update();
-    }
+
+    setTimeout(function () {
+        decryptedTokenValue = localStorage.getItem('decryptedToken');
+        encryptedToken = localStorage.getItem('encryptedToken');
+        idOfClickedProduct = localStorage.getItem('clickedProduct');
+
+        pagecheck = localStorage.getItem('productPage');
+
+        if (pagecheck === 'true') {
+            singleProductDetail();
+            update();
+        }
+    }, 3000);
 };
 
 
-function loginUser(event) {
-    event.preventDefault();
+
+function loginUser() {
+    //event.preventDefault();
 
     const emailInput = document.querySelector('#loginemail');
     const passwordInput = document.querySelector('#loginpassword');
@@ -572,7 +599,7 @@ function loginUser(event) {
 
                 updateLoginStatus();
                 if (pagecheck == 'true') {
-                    update();
+                    //update();
                     checkIfAlreadyfvrt(encryptedToken);
                 }
                 
@@ -580,11 +607,11 @@ function loginUser(event) {
                 if (modalContainer) {
                     modalContainer.remove();
                 }
-                hideLoader();
+                //hideLoader();
                 
             })
             .catch(error => {
-                console.error('Error:', error);
+                //console.error('Error:', error);
                 hideLoader();
                 alert('Incorrect Email or Password');
             });
@@ -618,12 +645,12 @@ function updateLoginStatus() {
         localStorage.setItem('userId', '');
         localStorage.setItem('decryptedToken', '');
         encryptedToken = localStorage.getItem('decryptedToken');
-
+        //hideLoader();
         
     }
     else {
         //console.log("it is not undefined : ", checkToken);
-        console.log("login status updated :");
+        //console.log("login status updated :");
         // Session is active
         loginButton.classList.add('d-none');
         logoutButton.classList.remove('d-none');
@@ -634,13 +661,18 @@ function updateLoginStatus() {
             const decToken = JSON.stringify(parsedToken);
             localStorage.setItem('userId', decToken.ID);
             localStorage.setItem('decryptedToken', decToken);
-
+            
         }
         if (pagecheck === 'true') {
+            showLoader();
             checkIfAlreadyfvrt(encryptedToken);
 
         }
-        
+        if (pagecheck !== 'true' && currentpage == 2 && encryptedToken) {
+            console.log("new condition don:");
+            hideLoader();
+
+        }
 
     }
 }
@@ -658,8 +690,10 @@ function logoutUser() {
     encryptedToken = localStorage.setItem('encryptedToken', undefined);
     fvrtCheck = localStorage.removeItem('checkFvrt'); 
     updateLoginStatus();
-    update();
-    updateFvrtbtn();
+    if (pagecheck == 'true') {
+        updateFvrtbtn();
+        update();
+    }
     hideLoader();
 
 }
@@ -738,18 +772,22 @@ async function singleProductDetail(id) {
         const sellerName = await getSellerName(sellerID);
         const productCategory = await getSingleProductCategory(categoryID);
 
-
+        
         prductSeller.textContent = sellerName;
         productCat.textContent = "Category : " + productCategory;
         const reported = productDetails.isReported;
+        update();
+
         if (reported && pagecheck === 'true') {
             reportBtnUpdate(reported);
         }
         else {
             return;
+            hideLoader();
         }
         //debugger
         if (pagecheck === 'true' && (encryptedToken !== null && encryptedToken !== 'null' && encryptedToken !== '' && encryptedToken)) {
+
             checkIfAlreadyfvrt(encryptedToken);
         }
         else {
@@ -759,7 +797,8 @@ async function singleProductDetail(id) {
 
     } catch (error)
     {
-        console.error('Error:', error);
+        return;
+        //console.error('Error:', error);
     }
 }
     
@@ -776,9 +815,9 @@ async function getSingleProductCategory(productID)
 {
     const response = await fetch(`${link}api/Extra/GetCategoryByIdWOT?id=${productID}`);
     const data = await response.json();
+    //console.log("category data :", data);
     //console.log("result from category function", data);
     const productCat = data.result.name;
-    //console.log(data);
     
     return productCat;
 }
@@ -801,11 +840,13 @@ function changeMainImage(button)
 }
 function checkIfAlreadyfvrt(token)
 {
+    //showLoader();
     //console.log(id, token);
-    console.log("inside new func", token);
+   // console.log("inside new func", token);
     //debugger
     if (token)
     {
+        showLoader();
         axios.get(`${link}api/Product/GetFavProducts`,
         {
                 headers:
@@ -821,36 +862,33 @@ function checkIfAlreadyfvrt(token)
                 //console.log("here in fvrt we can use check disabled :", fvrtRspns);
                 //debugger
                 const idClicked = parseInt(idOfClickedProduct, 10);
-                const result = fvrtRspns.map((element) =>
+                fvrtRspns.forEach((element) =>
                 {
                     if (element.id === idClicked)
                     {
-                        return true;
+                        localStorage.setItem('checkFvrt', true);
+                        fvrtCheck = localStorage.getItem('checkFvrt');
+                        updateFvrtbtn();
+                        //return true;
                     }
-                    return false;
+                    else {
+                        localStorage.setItem('checkFvrt', false);
+                        fvrtCheck = localStorage.getItem('checkFvrt');
+                        updateFvrtbtn();
+                    }
+                    //return false;
                 });
-
-                if (result.includes(true))
-                {
-                    localStorage.setItem('checkFvrt', true);
-                    fvrtCheck = localStorage.getItem('checkFvrt');
-                    updateFvrtbtn();
-                } else
-                {
-                    localStorage.setItem('checkFvrt', false);
-                    fvrtCheck = localStorage.getItem('checkFvrt');
-                    updateFvrtbtn();
-                }
-                //hideLoader();
+                hideLoader();
             })
 
             .catch(error =>
             {
                 // Handle the error
-                console.error('Error:', error);
+                //console.error('Error:', error);
                 hideLoader();
             });
     }
+    update();
     
 }
 
@@ -874,7 +912,7 @@ function favourite()
 }          
 function sendDecryptedToken(id, token)
 {
-    console.log(id, token);
+    //console.log(id, token);
     
     axios.post(`${link}api/Auth/SetFavProduct?id=${id}`, null,
     {
@@ -898,7 +936,7 @@ function updateFvrtbtn()
     //fvrtCheck =localStorage.getItem('checkFvrt');
     
     favort = fvrtCheck;
-    console.log("here what we got from map", favort);
+   // console.log("here what we got from map", favort);
     if (favort === 'true') {
         //console.log('helllllllllo');
         const firstfvrtbtn = document.getElementById('product-save');
@@ -917,6 +955,7 @@ function updateFvrtbtn()
                             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                         </svg>
                         UnSave`;
+        hideLoader();
     }
     else
     {
@@ -937,7 +976,9 @@ function updateFvrtbtn()
                             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                         </svg>
                         Save`;
+        hideLoader();
     }
+
 }
 
 async function sendProductReport()
@@ -963,22 +1004,23 @@ async function sendProductReport()
         });
 
         const responseData = response.data;
-        console.log(responseData.result);
+       // console.log(responseData.result);
         const isReport = responseData.result.isReported;
-        console.log(isReport);
+       // console.log(isReport);
 
         if (isReport)
         {
             reportBtnUpdate(isReport);
-            console.log('The report is true');
+           // console.log('The report is true');
             hideLoader();
         } else {
-            console.log('The report is false');
+           // console.log('The report is false');
             hideLoader();
         }
     } catch (error)
     {
-        console.error('Error:', error);
+        alert('Login First to Report');
+        //console.error('Error:', error);
         hideLoader();
 
     }
